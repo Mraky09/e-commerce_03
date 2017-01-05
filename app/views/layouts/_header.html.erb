@@ -1,6 +1,5 @@
 <header>
   <div class="container">
-    <!-- Modal Signup -->
     <div class="modal fade" id="myModalSignup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -12,17 +11,20 @@
           </div>
           <div class="modal-body">
             <div class="col-md-8">
-              <form action="">
-                <label for="user_name"><%= t ".name" %></label>
-                <input type="text" name="user[name]" id="user_name" class="form-control">
-                <label for="user_email"><%= t ".email" %></label>
-                <input type="email" name="user[email]" id="user_email" class="form-control">
-                <label for="user_password"><%= t ".password" %></label>
-                <input type="password" name="user[password]" id="user_password" class="form-control">
-                <label for="user_password_confirmation"><%= t ".password_confirmation" %></label>
-                <input type="password" name="user[password_confirmation]" id="user_password_confirmation" class="form-control">
-                <input type="submit" name="commit" value="Create Account" class="btn btn-primary">
-              </form>
+              <%= form_for resource, as: resource_name,
+                url: registration_path(resource_name) do |f| %>
+
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, class: "form-control" %>
+
+                <%= f.label :password %>
+                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+
+                <%= f.submit t(".signup"), class: "form-control btn btn-primary" %>
+              <% end %>
             </div>
             <div class="col-md-4">
               <p><%= t ".forward_login" %></p>
@@ -48,15 +50,22 @@
           </div>
           <div class="modal-body">
             <div class="col-md-8">
-              <form action="">
-                <label for="session_email"><%= t ".email" %></label>
-                <input type="email" id="session_email" name="session[email]" class="form-control">
-                <label for="session_password"><%= t ".password" %></label>
-                <input type="password" id="session_password" name="session[password]" class="form-control">
-                <input type="checkbox" id="session_remember_me" name="session[remember_me]" value="">
-                <label for="session_remember_me"><%= t ".remember_me" %></label><br>
-                <input type="submit" name="commit" value="Login" class="btn btn-primary">
-              </form>
+              <%= form_for resource, as: resource_name,
+                url: session_path(resource_name) do |f| %>
+
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, class: "form-control" %>
+
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+
+                <% if devise_mapping.rememberable? -%>
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                <% end -%>
+
+                <%= f.submit t(".login"), class: "form-control btn btn-primary" %>
+              <% end %>
             </div>
             <div class="col-md-4">
               <p><%= t ".forward_signup" %></p>
@@ -74,7 +83,6 @@
 
   <nav class="navbar navbar-default">
     <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -85,7 +93,6 @@
         <%= link_to t("brand"), root_path, class: "navbar-brand" %>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <form class="navbar-form navbar-left">
           <div class="form-group">
@@ -94,18 +101,27 @@
           <button type="submit" class="btn btn-default"><%= t ".search" %></button>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#" data-toggle="modal" data-target="#myModalSignup">
-              <span class="glyphicon glyphicon-exclamation-sign"></span> <%= t ".signup" %>
-            </a>
-          </li>
-          <li>
-            <a href="#" data-toggle="modal" data-target="#myModalLogin">
-              <span class="glyphicon glyphicon-log-in"></span> <%= t ".login" %>
-            </a>
-          </li>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to t("log_out"), destroy_user_session_path , method: :delete %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "", data: {toggle: "modal", target: "#myModalSignup"} do %>
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                  <%= t ".signup" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "", data: {toggle: "modal", target: "#myModalLogin"} do %>
+                <span class="glyphicon glyphicon-log-in"></span>
+                  <%= t ".login" %>
+              <% end %>
+            </li>
+          <% end %>
+
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+    </div>
   </nav>
 </header>
