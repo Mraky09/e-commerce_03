@@ -1,2 +1,5 @@
 format:
   picture_size: [400, 400]
+admin:
+  users_list:
+    per_page: 10

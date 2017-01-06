@@ -9,4 +9,9 @@ Rails.application.routes.draw do
     resources :products
   end
   devise_for :users
+
+  namespace :admin do
+    get "dashboard/show"
+    resources :users
+  end
 end

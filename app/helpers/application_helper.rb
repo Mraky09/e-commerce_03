@@ -25,4 +25,8 @@ module ApplicationHelper
     link_to name, "#", class: "add_fields",
       data: {id: id, fields: fields.gsub("\n", "")}
   end
+
+  def create_index object, index, per_page
+    (object.to_i - 1) * per_page + index + 1
+  end
 end
