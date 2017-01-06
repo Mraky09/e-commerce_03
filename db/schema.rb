@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(version: 20170105082624) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "parent_category_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "depth"
+    t.integer  "left"
+    t.integer  "right"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "comments", force: :cascade do |t|

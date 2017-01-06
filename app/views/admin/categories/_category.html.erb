@@ -1,0 +1,21 @@
+<tr id="<%= dom_id(category) %>">
+  <td>
+    <% if category.depth > 0 %>
+      <%= "-" * category.depth %>
+      <%= category.name %>
+    <% else %>
+      <%= category.name %>
+    <% end %>
+  </td>
+  <td><%= category.products.size %></td>
+  <td><%= category.description %></td>
+  <td>
+    <%= link_to admin_category_path(category), class: "btn-edit-category" do %>
+      <i class="fa fa-pencil-square-o"></i>
+    <% end %>
+    |
+    <%= link_to admin_category_path(category), class: "btn-delete-category" do %>
+      <i class="fa fa-times"></i>
+    <% end %>
+  </td>
+</tr>

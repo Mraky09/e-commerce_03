@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   get "/pages/about", to: "static_pages#about"
   get "/pages/contact", to: "static_pages#contact"
   get "/pages/*page", to: "static_pages#show"
+  namespace :admin do
+    resources :categories
+  end
   devise_for :users
 end
