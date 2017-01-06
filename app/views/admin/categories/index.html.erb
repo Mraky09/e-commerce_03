@@ -1,0 +1,21 @@
+<%= provide :title, t("category_list") %>
+<div class="row">
+  <div class="col-md-4">
+    <%= render "category_form" %>
+  </div>
+
+  <div class="col-md-8">
+    <h1><%= t "category_list" %></h1>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <th><%= t ".name" %></th>
+        <th><%= t ".product" %></th>
+        <th><%= t "description" %></th>
+        <th><%= t ".action" %></th>
+      </thead>
+      <tbody id="category-list">
+        <%= render @categories %>
+      </tbody>
+    </table>
+  </div>
+</div>
