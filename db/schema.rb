@@ -96,10 +96,10 @@ ActiveRecord::Schema.define(version: 20170105082624) do
 
   create_table "specifications", force: :cascade do |t|
     t.integer  "product_id"
-    t.string   "attribute"
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "feature_name"
+    t.string   "feature_value"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["product_id"], name: "index_specifications_on_product_id"
   end
 

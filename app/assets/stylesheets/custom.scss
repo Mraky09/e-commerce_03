@@ -77,3 +77,11 @@ footer{
     margin-top: 15px;
   }
 }
+
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 400px;
+    overflow-y: auto;
+}
