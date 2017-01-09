@@ -1,0 +1,16 @@
+<fieldset>
+  <div class="row">
+    <div class="col-sm-5">
+      <%= f.label :feature_name %>
+      <%= f.text_field :feature_name, class: "form-control", required: true %>
+    </div>
+
+    <div class="col-sm-5">
+      <%= f.label :feature_value %>
+      <%= f.text_field :feature_value, class: "form-control", required: true %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to t("remove"), "#", id: "remove_fields" %>
+    </div>
+  </div>
+</fieldset>

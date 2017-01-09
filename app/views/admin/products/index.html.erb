@@ -1,0 +1,36 @@
+<%= provide :title, t("product_list") %>
+<div class="row">
+  <div class="col-md-4">
+    <a id="btn-new-product" class="btn btn-success">
+      <span>
+        <i class="fa fa-plus-square" aria-hidden="true"><%= t ".new" %></i>
+      </span>
+    </a>
+    <div id="modal-new" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2><%= t ".new" %></h2>
+        </div>
+        <div class="modal-body">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <h1><%= t "product_list" %></h1>
+    <table class="table table-bordered table-hover" id="products">
+      <thead>
+        <th><%= t ".name" %></th>
+        <th><%= t ".price" %></th>
+        <th><%= t "category" %></th>
+        <th><%= t ".action" %></th>
+      </thead>
+      <tbody id="category-list">
+        <%= render @products %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -34,9 +34,53 @@ $(document).on('turbolinks:load', function() {
           }
         },
         error: function(jqXHR, exception) {
-          alert(I18n.t('erros'), I18n.t("created_error") + jqXHR.status, I18n.t('error'));
+          alert(I18n.t('erros'), I18n.t('created_error') + jqXHR.status, I18n.t('error'));
         }
       });
     });
   });
+
+  $(".close").click(function(e) {
+    $('#modal-new').hide();
+  });
+  $('#btn-new-product').click(function(e) {
+    e.preventDefault()
+    $('#modal-new').css('display', 'block')
+    $.ajax({
+      dataType: 'html',
+      url: 'products/new',
+      method: 'get',
+      success: function(data) {
+        $('.modal-body').html(data)
+      }
+    });
+    return false
+  });
+
+  new_item('#new_product', '#products', 'create_product_error');
+
+  $count = 0;
+
+  $('body').on('click', '.add_fields', function(e) {
+    e.preventDefault();
+    $spec = $(this).attr('data-fields');
+    if ($count < 4) {
+      $('.spec').append($spec);
+      $count += 1;
+    } else {
+      alert(I18n.t('maximum'));
+      return;
+    }
+    return false;
+  });
+
+  $('body').on('click', '#remove_fields', function(e) {
+    e.preventDefault();
+    $fieldset = $(this).closest('fieldset')
+    $fieldset.fadeOut(1000, function() {
+      $fieldset.remove();
+      $count -= 1;
+    })
+    return false;
+  })
 });
