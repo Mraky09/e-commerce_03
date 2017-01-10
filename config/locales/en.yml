@@ -1,6 +1,4 @@
 en:
-
-  see_more: "(xem thêm)"
   brand: "Framgia Ecommerce"
   previous: "Previous"
   next: "Next"
@@ -43,6 +41,9 @@ en:
       search: "Search"
       remember_me: "Remember me"
       users: "Users"
+      categories: "Categories"
+      products: "Products"
+      dashboard: "Dashboard"
   time:
     formats:
       defaults: "%d/%m/%Y"
