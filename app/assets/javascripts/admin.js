@@ -58,6 +58,7 @@ $(document).on('turbolinks:load', function() {
   });
 
   new_item('#new_product', '#products', 'create_product_error');
+  delete_item('.btn-delete-category', 'category')
 
   $count = 0;
 

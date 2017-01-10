@@ -1,7 +1,16 @@
 <%= provide :title, t("category_list") %>
 <div class="row">
   <div class="col-md-4">
-    <%= render "category_form" %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t ".menu" %></h3>
+      </div>
+      <div class="panel-body">
+        <%= render "category_form" %>
+        <br>
+      </div>
+    </div>
+
   </div>
 
   <div class="col-md-8">

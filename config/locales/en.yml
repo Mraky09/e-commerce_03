@@ -14,9 +14,16 @@ en:
   add_spec: "Add specification"
   maximum: "A product only have 4 specifications"
   log_out: "Log out"
+  you_sure: "Are you sure?"
+  warning_delete: "Warning!"
+  confirm_button: "Delete!"
+  cancel_button: "Cancel"
   table_index: "No."
   no_data: "No data"
   search: "Search"
+  something_wrong: "Something went wrong"
+  create_cate_error: "You might insert an existed category or its name is over 150 characters."
+  dont_delete: "OK, We'll not delete your data"
   static_pages:
     home:
       hot_products: "Sản phẩm bán chạy"
