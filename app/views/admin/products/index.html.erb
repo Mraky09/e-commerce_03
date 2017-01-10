@@ -1,11 +1,36 @@
 <%= provide :title, t("product_list") %>
 <div class="row">
   <div class="col-md-4">
-    <a id="btn-new-product" class="btn btn-success">
-      <span>
-        <i class="fa fa-plus-square" aria-hidden="true"><%= t ".new" %></i>
-      </span>
-    </a>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t ".menu" %></h3>
+      </div>
+      <div class="panel-body">
+        <%= search_form_for [:admin, @search] do |f| %>
+          <%= f.text_field :name_cont, class: "form-control", autofocus: true,
+            placeholder: t("search") %>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.text_field :price_gteq, class: "form-control", autofocus: true,
+                placeholder: t(".price_gteq") %>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :price_lteq, class: "form-control", autofocus: true,
+                placeholder: t(".price_lteq") %>
+            </div>
+          </div>
+          <br>
+          <%= f.submit t("search"), class: "btn btn-default" %>
+          <a id="btn-new-product" class="btn btn-success">
+            <span>
+              <i class="fa fa-plus-square" aria-hidden="true"><%= t ".new" %></i>
+            </span>
+          </a>
+        <% end %>
+        <br>
+      </div>
+    </div>
     <div id="modal-new" class="modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -23,9 +48,9 @@
     <h1><%= t "product_list" %></h1>
     <table class="table table-bordered table-hover" id="products">
       <thead>
-        <th><%= t ".name" %></th>
-        <th><%= t ".price" %></th>
-        <th><%= t "category" %></th>
+        <th><%= sort_link @search, :name %></th>
+        <th><%= sort_link @search, :price %></th>
+        <th><%= sort_link @search, :category %></th>
         <th><%= t ".action" %></th>
       </thead>
       <tbody id="category-list">

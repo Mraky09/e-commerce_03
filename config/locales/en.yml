@@ -16,6 +16,7 @@ en:
   log_out: "Log out"
   table_index: "No."
   no_data: "No data"
+  search: "Search"
   static_pages:
     help:
       help: "Help"
@@ -50,6 +51,9 @@ en:
     products:
       index:
         new: "New product"
+        price_gteq: "Price greater than"
+        price_lteq: "Price less than"
+        menu: "Product menu"
     dashboard:
       show:
         admin_dashboard: "Dashboard"
