@@ -1,4 +1,7 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :authenticate_user!, :is_admin?
+  load_and_authorize_resource
+
   def index
     @category = Category.new
     @categories = Category.includes(:products).order :left
