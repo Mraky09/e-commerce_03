@@ -3,3 +3,6 @@ format:
 admin:
   users_list:
     per_page: 10
+home:
+  display_product: 8
+hot_trend: 15
