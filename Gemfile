@@ -28,6 +28,7 @@ gem "carrierwave", "~> 0.11.2"
 gem "mini_magick", "~> 4.6"
 gem "awesome_print", "1.7.0"
 gem "kaminari"
+gem "ransack"
 
 group :development, :test do
   gem "rubocop", require: false
