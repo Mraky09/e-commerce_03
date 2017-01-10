@@ -9,7 +9,7 @@
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#nav_test">
     <%= render "layouts/header" %>
     <%= yield %>
     <%= render "layouts/footer" %>

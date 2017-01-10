@@ -1,4 +1,6 @@
 en:
+
+  see_more: "(xem thêm)"
   brand: "Framgia Ecommerce"
   previous: "Previous"
   next: "Next"
@@ -18,6 +20,9 @@ en:
   no_data: "No data"
   search: "Search"
   static_pages:
+    home:
+      hot_products: "Sản phẩm bán chạy"
+      new_products: "Sản phẩm mới"
     help:
       help: "Help"
     about:

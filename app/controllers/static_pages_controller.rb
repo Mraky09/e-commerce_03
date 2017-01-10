@@ -1,4 +1,8 @@
 class StaticPagesController < ApplicationController
+  def home
+    @support = Supports::StaticPageSupport.new
+  end
+
   def show
     if valid_page?
       render template: "#{params[:page]}.to_s"

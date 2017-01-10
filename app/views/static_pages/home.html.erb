@@ -6,7 +6,13 @@
   <div class="homepage-content">
     <div class="container">
       <div class="col-md-2 homepage-content-left">
-
+        <div id="nav_test" data-spy="affix" class="visible-lg visible-md">
+          <ul class="nav nav-pills nav-stacked">
+            <% @support.root_categories.each do |category| %>
+              <li><a href="#"><%= category.name %></a></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
 
       <div class="col-md-10 homepage-content-right">
@@ -38,8 +44,60 @@
             <span class="sr-only"><%= t "next" %></span>
           </a>
         </div>
-      </div>
 
+        <h1 class="page-header" id="electronics"><%= t ".hot_products" %></h1>
+        <div class="clr"></div>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="phone">
+            <div class="row">
+              <% @support.hot_products.each do |product| %>
+                <div class="col-sm-6 col-md-3">
+                  <div class="box">
+                    <p class="box-img">
+                      <a href="#">
+                        <img src="https://api.fnkr.net/testimg/200x170" alt="">
+                      </a>
+                    </p>
+                    <h3 class="box-title">
+                      <a href="#"><%= product.name %></a>
+                    </h3>
+                    <p class="box-price" data-toggle="tooltip" data-placement="bottom" title="">
+                      <%= product.price %> ₫
+                    </p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="page-header" id="electronics"><%= t ".new_products" %></h1>
+        <div class="clr"></div>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="phone">
+            <div class="row">
+              <% @support.new_products.each do |product| %>
+                <div class="col-sm-6 col-md-3">
+                  <div class="box">
+                    <p class="box-img">
+                      <a href="#">
+                        <img src="https://api.fnkr.net/testimg/200x170" alt="">
+                      </a>
+                    </p>
+                    <h3 class="box-title">
+                      <a href="#"><%= product.name %></a>
+                    </h3>
+                    <p class="box-price" data-toggle="tooltip" data-placement="bottom" title="">
+                      <%= product.price %> ₫
+                    </p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
