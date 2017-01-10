@@ -14,6 +14,8 @@ en:
   add_spec: "Add specification"
   maximum: "A product only have 4 specifications"
   log_out: "Log out"
+  table_index: "No."
+  no_data: "No data"
   static_pages:
     help:
       help: "Help"
@@ -34,6 +36,10 @@ en:
       forgot_password: "Forgot password?"
       search: "Search"
       remember_me: "Remember me"
+      users: "Users"
+  time:
+    formats:
+      defaults: "%d/%m/%Y"
   admin:
     categories:
       index:
@@ -44,6 +50,18 @@ en:
     products:
       index:
         new: "New product"
+    dashboard:
+      show:
+        admin_dashboard: "Dashboard"
+    users:
+      index:
+        manage_users: "Manage Users"
+        name: "Name"
+        email: "Email"
+        role: "Role"
+        block: "Block / Unlock"
+        admin: "Admin"
+        member: "member"
   time:
     formats:
       defaults: "%d/%m/%Y"

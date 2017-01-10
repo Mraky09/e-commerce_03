@@ -6,6 +6,15 @@
   clear: both;
 }
 
+thead{
+  background: #1DA1F2;
+  color: #fff;
+}
+
+td[class="no-data"]{
+  text-align: center;
+}
+
 // header
 header{
   .modal{
@@ -82,6 +91,12 @@ footer{
     overflow-y: initial !important
 }
 .modal-body{
-    height: 400px;
-    overflow-y: auto;
+  height: 400px;
+  overflow-y: auto;
+}
+
+// admin: manage users
+.is_admin{
+  color: red;
+  font-weight: bold;
 }

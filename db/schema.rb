@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20170105082624) do
     t.string   "feature_value"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["id", "product_id"], name: "index_specifications_on_id_and_product_id", unique: true
     t.index ["product_id"], name: "index_specifications_on_product_id"
   end
 
