@@ -18,6 +18,16 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if !@category.leaf? || @category.products.any?
+        format.js{render status: 500}
+      elsif @category.delete_category && @category.destroy
+        format.html
+      end
+    end
+  end
+
   private
   def category_params
     params.require(:category).permit :name, :description
