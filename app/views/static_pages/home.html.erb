@@ -97,6 +97,36 @@
           </div>
         </div>
 
+        <h1 class="page-header" id="electronics"><%= t ".recent_viewed_products" %></h1>
+        <div class="clr"></div>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="phone">
+            <div class="row">
+              <% if @recent_viewed_products.any? %>
+                <% @recent_viewed_products.each do |product| %>
+                  <div class="col-sm-6 col-md-3">
+                    <div class="box">
+                      <p class="box-img">
+                        <a href="#">
+                          <img src="https://api.fnkr.net/testimg/200x170" alt="">
+                        </a>
+                      </p>
+                      <h3 class="box-title">
+                        <a href="#"><%= product.name %></a>
+                      </h3>
+                      <p class="box-price" data-toggle="tooltip" data-placement="bottom" title="">
+                        <%= product.price %> ₫
+                      </p>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                <h4 class="no_product"><%= t "no_product" %></h4>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

@@ -6,3 +6,4 @@ admin:
 home:
   display_product: 8
 hot_trend: 15
+max_item_for_recent: 10
