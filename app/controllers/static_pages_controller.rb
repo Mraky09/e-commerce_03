@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
     @support = Supports::StaticPageSupport.new
+    @recent_viewed_products = session[:recent].map{|id| Product.find_by id: id} if
+      session[:recent]
   end
 
   def show
