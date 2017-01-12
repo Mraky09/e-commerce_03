@@ -1,9 +1,12 @@
 <div class="col-md-2 homepage-content-left">
-  <div id="nav_test" data-spy="affix" class="visible-lg visible-md">
+  <div class="menu_bar" id="nav_test" data-spy="affix" class="visible-lg visible-md">
     <ul class="nav nav-pills nav-stacked">
-      <% @support.root_categories.each do |category| %>
-        <li><a href="#"><%= category.name %></a></li>
-      <% end %>
+      <li class="dropdown navc product-cate">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+          <%= t ".category" %>
+        </a>
+        <%= raw load_categories_menu %>
+      </li>
     </ul>
   </div>
 </div>
