@@ -16,14 +16,22 @@
         <% @product_carts.each do |product, quantity| %>
           <tr>
             <td>
-              <img src="https://api.fnkr.net/testimg/120x120/333/FFF/?text=img+placeholder">
+              <% if product.image.present? %>
+                <%= image_tag product.image.url %>
+              <% else %>
+                <img src="https://api.fnkr.net/testimg/120x120/333/FFF/?text=img+placeholder">
+              <% end %>
             </td>
             <td>
-              <a href="#" class="product-name"><%= product.name %></a>
+              <%= link_to product.name, product_path(product), {class: "product-name"} %>
+              <br>
+              <%= link_to "", "/cart/#{product.id}",
+                method: :delete, data: {confirm: t(".delete_confirm")},
+                class: "btn btn-danger fa fa-trash-o" %>
             </td>
-            <td class="product-price"><%= product.price %> ₫</td>
+            <td class="product-price"><%= number_to_currency product.price %></td>
             <td>
-              <input type="number" value="" class="form-control">
+              <input type="number" class="form-control" value="<%= quantity %>" data="<%= product.id %>" class="item_quantiy">
             </td>
           </tr>
         <% end %>
