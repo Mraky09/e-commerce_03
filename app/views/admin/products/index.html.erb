@@ -1,70 +1,70 @@
 <%= provide :title, t("product_list") %>
 <h1><%= t "product_list" %></h1>
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= t ".menu" %></h3>
-    </div>
-    <div class="panel-body">
-      <%= search_form_for [:admin, @search] do |f| %>
-        <%= f.text_field :name_cont, class: "form-control", autofocus: true,
-          placeholder: t("search") %>
-        <br>
-        <div class="row">
-          <div class="col-md-6">
-            <%= f.text_field :price_gteq, class: "form-control", autofocus: true,
-              placeholder: t(".price_gteq") %>
-          </div>
-          <div class="col-md-6">
-            <%= f.text_field :price_lteq, class: "form-control", autofocus: true,
-              placeholder: t(".price_lteq") %>
-          </div>
-        </div>
-        <br>
-        <%= f.submit t("search"), class: "btn btn-default" %>
-        <a id="btn-new-product" class="btn btn-success">
-          <span>
-            <i class="fa fa-plus-square" aria-hidden="true"><%= t ".new" %></i>
-          </span>
-        </a>
-      <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= t ".menu" %></h3>
+  </div>
+  <div class="panel-body">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <%= f.text_field :name_cont, class: "form-control", autofocus: true,
+        placeholder: t("search") %>
       <br>
-    </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.text_field :price_gteq, class: "form-control", autofocus: true,
+            placeholder: t(".price_gteq") %>
+        </div>
+        <div class="col-md-6">
+          <%= f.text_field :price_lteq, class: "form-control", autofocus: true,
+            placeholder: t(".price_lteq") %>
+        </div>
+      </div>
+      <br>
+      <%= f.submit t("search"), class: "btn btn-default" %>
+      <a id="btn-new-product" class="btn btn-success">
+        <span>
+          <i class="fa fa-plus-square" aria-hidden="true"></i> <%= t ".new" %>
+        </span>
+      </a>
+    <% end %>
+    <br>
   </div>
-  <div id="modal-new" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2><%= t ".new" %></h2>
-      </div>
-      <div class="modal-body">
+</div>
+<div id="modal-new" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2><%= t ".new" %></h2>
+    </div>
+    <div class="modal-body">
 
-      </div>
     </div>
   </div>
 </div>
 
-<div class="col-md-8">
-  <table class="table table-striped table-hover" id="products">
-    <thead>
-      <th><%= t "table_index" %></th>
-      <th class="sort-data">
-        <span class="glyphicon glyphicon-resize-vertical"></span>
-        <%= sort_link @search, :name %>
-      </th>
-      <th class="sort-data">
-        <span class="glyphicon glyphicon-resize-vertical"></span>
-        <%= sort_link @search, :price %>
-      </th>
-      <th class="sort-data">
-        <span class="glyphicon glyphicon-resize-vertical"></span>
-        <%= sort_link @search, :category %>
-      </th>
-      <th><%= t "edit" %></th>
-      <th><%= t "delete" %></th>
-    </thead>
-    <tbody id="category-list">
-      <%= render @products %>
-    </tbody>
-  </table>
-</div>
+<table class="table table-striped table-hover" id="products">
+  <thead>
+    <th><%= t "table_index" %></th>
+    <th class="sort-data">
+      <span class="glyphicon glyphicon-resize-vertical"></span>
+      <%= sort_link @search, :name %>
+    </th>
+    <th class="sort-data">
+      <span class="glyphicon glyphicon-resize-vertical"></span>
+      <%= sort_link @search, :price %>
+    </th>
+    <th><%= t ".quantity" %></th>
+    <th class="sort-data">
+      <span class="glyphicon glyphicon-resize-vertical"></span>
+      <%= sort_link @search, :category %>
+    </th>
+    <th><%= t ".image" %></th>
+    <th><%= t "edit" %></th>
+    <th><%= t "delete" %></th>
+  </thead>
+  <tbody id="category-list">
+    <%= render @products %>
+  </tbody>
+</table>
+
+<%= paginate @products, theme: "twitter-bootstrap-4" %>

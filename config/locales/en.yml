@@ -92,6 +92,11 @@ en:
         price_gteq: "Price greater than"
         price_lteq: "Price less than"
         menu: "Product menu"
+      product:
+        save: "Update Product"
+      update:
+        update_success: "Update Product Success"
+        update_failed: "Cannot update product"
     dashboard:
       show:
         admin_dashboard: "Dashboard"
