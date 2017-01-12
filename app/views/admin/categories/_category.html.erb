@@ -11,7 +11,8 @@
   <td><%= category.products.size %></td>
   <td><%= category.description %></td>
   <td class="align-text-center">
-    <%= link_to admin_category_path(category), class: "text-normal btn-edit-category" do %>
+    <%= link_to "#category-modal-#{category.id}", data: {toggle: :modal},
+      class: "text-normal btn-edit-category" do %>
       <span class="glyphicon glyphicon-edit"></span>
     <% end %>
   </td>
@@ -21,3 +22,37 @@
     <% end %>
   </td>
 </tr>
+
+<%= form_tag admin_category_path(category) , method: :put, id: "edit-category-form" do %>
+  <div id="category-modal-<%= category.id %>" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="head"><%= t ".edit_category" %></h3>
+        </div>
+        <div class="modal-body admin-edit-category">
+          <form role="form">
+            <%= hidden_field_tag "id", category.id %>
+            <div>
+              <label><%= t ".name" %></label>
+              <%= text_field_tag :name, params[:name], value: category.name,
+                class: "form-control" %>
+              <br>
+            </div>
+            <div>
+              <label><%= t ".description" %></label>
+              <%= text_field_tag :description, params[:description],
+                value: category.description, class: "form-control" %>
+            </div>
+            <div class="modal-footer">
+              <%= submit_tag t(".update"), class: "btn btn-primary btn-submit" %>
+              <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                <%= t ".cancel" %>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

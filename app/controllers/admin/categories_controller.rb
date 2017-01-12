@@ -5,7 +5,8 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @category = Category.new
-    @categories = Category.includes(:products).order :left
+    @search = Category.ransack params[:q]
+    @categories = @search.result.includes(:products).order :left
   end
 
   def create
@@ -17,6 +18,15 @@ class Admin::CategoriesController < ApplicationController
         format.html
       end
     end
+  end
+
+  def update
+    if @category.update_attributes category_params
+      flash[:success] = t ".update_success"
+    else
+      flash[:danger] = t".update_fail"
+    end
+    redirect_to :back
   end
 
   def destroy
@@ -31,6 +41,6 @@ class Admin::CategoriesController < ApplicationController
 
   private
   def category_params
-    params.require(:category).permit :name, :description
+    params.permit :name, :description
   end
 end
