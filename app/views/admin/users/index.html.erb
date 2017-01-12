@@ -1,9 +1,24 @@
 <% provide :title, t(".manage_users") %>
 
-<table class="table table-hover table-striped table-bordered">
+<h1><%= t ".manage_users" %></h1>
+
+<div class="container col-md-6 col-md-offset-3">
+  <%= search_form_for [:admin, @search] do |f| %>
+    <div class="col-md-10 row">
+      <%= f.text_field :name_cont, class: "form-control", autofocus: true,
+        placeholder: t(".admin_users_search") %>
+    </div>
+    <div class="col-md-2 row">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+<br><br><br>
+<table class="table table-hover table-striped manage-users">
   <thead>
     <tr>
       <th><%= t "table_index" %></th>
+      <th><%= t ".avatar" %></th>
       <th><%= t ".name" %></th>
       <th><%= t ".email" %></th>
       <th><%= t ".role" %></th>
@@ -19,6 +34,7 @@
             <% params[:page] ||= "1" %>
             <%= create_index params[:page], index, Settings.admin.users_list.per_page %>
           </td>
+          <td class="align-text-center"><%= gravatar_for user %></td>
           <td><%= user.name %></td>
           <td><%= user.email %></td>
           <% if user.admin? %>
@@ -27,12 +43,12 @@
             <td>&nbsp;</td>
           <% else %>
             <td><span><%= t ".memeber" %></span></td>
-            <td>
+            <td class="align-text-center">
               <%= link_to "#", class: "text-danger" do %>
                 <span class="glyphicon glyphicon-trash"></span>
               <% end %>
             </td>
-            <td>
+            <td class="align-text-center">
               <%= link_to "#" do %>
                 <span class="glyphicon glyphicon-lock"></span>
               <% end %>
@@ -42,10 +58,10 @@
       <% end %>
     <% else %>
       <tr>
-        <td colspan="6" class="no-data"><%= t "no_data" %></td>
+        <td colspan="7" class="no-data"><%= t "no_data" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= paginate @users %>
+<%= paginate @users, theme: "twitter-bootstrap-4" %>
