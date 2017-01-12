@@ -83,4 +83,10 @@ $(document).on('turbolinks:load', function() {
     })
     return false;
   })
+
+  var oldTimeout = '';
+  clearTimeout(oldTimeout);
+  oldTimeout = setTimeout(function() {
+    $(".flash-text").fadeOut();
+  }, 5000);
 });
