@@ -1,19 +1,31 @@
 <%= provide :title, t("category_list") %>
 <h1><%= t "category_list" %></h1>
-<div class="col-md-4">
+<div class="col-md-6">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= t ".menu" %></h3>
+      <h3 class="panel-title"><%= t ".add_category" %></h3>
     </div>
     <div class="panel-body">
       <%= render "category_form" %>
       <br>
     </div>
   </div>
-
 </div>
 
-<div class="col-md-8">
+<div class="col-md-6">
+  <%= search_form_for [:admin, @search] do |f| %>
+    <div class="col-md-12 row">
+      <%= f.text_field :name_cont, class: "form-control", autofocus: true,
+        placeholder: t(".admin_categories_search") %>
+    </div>
+    <br><br>
+    <div class="col-md-2 row">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="col-md-12">
   <table class="table table-striped table-hover">
     <thead>
       <th><%= t "table_index" %></th>

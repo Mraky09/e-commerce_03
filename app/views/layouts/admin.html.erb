@@ -13,6 +13,11 @@
     <%= render "layouts/admin_header" %>
     <%= render "layouts/admin_menu_bar" %>
     <div class="col-md-10 admin-content">
+      <div class="flash-text">
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <% end %>
+      </div>
       <%= yield %>
     </div>
     <%= render "layouts/admin_footer" %>

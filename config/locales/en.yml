@@ -76,6 +76,13 @@ en:
         product: "Product Quantity"
         created_at: "Created at"
         action: "Action"
+        add_category: "Add Category"
+        admin_categories_search: "Search category by name..."
+      category:
+        update: "Update"
+      update:
+        update_success: "Update Category Success"
+        update_fail: "Update Category Failed"
     products:
       index:
         new: "New product"
