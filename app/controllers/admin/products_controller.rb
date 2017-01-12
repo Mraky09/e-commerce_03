@@ -4,6 +4,7 @@ class Admin::ProductsController < ApplicationController
   layout "admin"
 
   def index
+    @product = Product.new
     @search = Product.search params[:q]
     @products = @search.result.select(:id, :name, :price, :category_id)
       .includes(:category).order(created_at: :DESC).page params[:page]
@@ -18,14 +19,13 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create product_params
-    respond_to do |format|
-      if @product.save
-        format.html{render @product}
-      else
-        render json: {errors: @product.errors.full_messages}
-      end
+    @product = Product.new product_params
+    if @product.save
+      flash[:success] = t ".create_product_success"
+    else
+      flash[:notice] = t ".create_product_fail"
     end
+    redirect_to :back
   end
 
   private

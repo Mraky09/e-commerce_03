@@ -1,0 +1,55 @@
+<div class="col-md-10">
+  <div class="card">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
+
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1"><%= image_tag @product.image.url if @product.image? %></div>
+          </div>
+
+        </div>
+        <div class="details col-md-6">
+          <h3 class="product-title"><%= @product.name %></h3>
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <span class="review-no"><%= t ".reviews" %></span>
+          </div>
+          <p class="product-description"><%= @product.description %></p>
+          <h4 class="price">current price: <span><%= number_to_currency @product.price %></span></h4>
+          <div class="action">
+            <button class="add-to-cart btn btn-default" type="button"><%= t ".add_to_cart" %></button>
+            <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1><%= t ".specification" %></h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t ".feature_name" %></th>
+        <th><%= t ".feature_value" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @specifications.each do |specification| %>
+        <tr>
+          <td class="col-md-4 title-bold">
+            <%= specification.feature_name %>
+          </td>
+          <td  class="col-md-8">
+            <%= specification.feature_value %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

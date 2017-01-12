@@ -84,6 +84,9 @@ en:
         update_success: "Update Category Success"
         update_fail: "Update Category Failed"
     products:
+      create:
+        create_product_success: "Product created!"
+        create_product_fail: "Product create failed!"
       index:
         new: "New product"
         price_gteq: "Price greater than"
@@ -120,3 +123,10 @@ en:
       quantity: "Quantity"
       checkout: "Checkout"
       your_cart: "Your Cart"
+  products:
+    show:
+      specification: "Product specification"
+      feature_name: "Feature name"
+      feature_value: "Feature description"
+      add_to_cart: "add to cart"
+      reviews: "reviews"

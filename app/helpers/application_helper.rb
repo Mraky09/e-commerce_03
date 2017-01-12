@@ -23,10 +23,37 @@ module ApplicationHelper
       render association.to_s.singularize + "_fields", f: builder
     end
     link_to name, "#", class: "add_fields",
-      data: {id: id, fields: fields.gsub("\n", "")}
+      data: {id: id, fields: fields.delete("\n")}
   end
 
   def create_index object, index, per_page
     (object.to_i - 1) * per_page + index + 1
+  end
+
+  def load_categories_menu
+    @tree = ""
+    tree Category.all
+  end
+
+  def tree categories, lft = 0, rgt = nil, depth = -1
+    @tree += "<ul class='dropdown-menu'>" if lft.zero? && rgt.nil? &&
+                                             depth == -1
+    categories.each do |category|
+      if category.left > lft && (rgt.nil? || category.left <
+        rgt) && category.depth == depth + 1
+        categories_temp = categories.compact
+        categories_temp.delete category
+        @tree += "<li class='dropdown-submenu '>
+          <a href='/categories/#{category.id}'>#{category.name}</a>"
+        if category.right != (category.left + 1)
+          @tree += "<ul class='dropdown-menu' >"
+          tree categories_temp, category.left, category.right, category.depth
+          @tree += "</ul>"
+        end
+        @tree += "</li>"
+      end
+    end
+    @tree += "</ul>" if lft.zero? & rgt.nil? && depth == -1
+    @tree
   end
 end
