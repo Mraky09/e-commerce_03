@@ -13,6 +13,7 @@ en:
   create: "Create"
   category_list: "Manage Categories"
   product_list : "Manage Products"
+  order_list: "Manage Orders"
   wong_authorize: "You do not have authorize for this page."
   add_spec: "Add specification"
   maximum: "A product only have 4 specifications"
@@ -111,6 +112,19 @@ en:
         member: "member"
         avatar: "Avatar"
         admin_users_search: "Search user by name..."
+    orders:
+      index:
+        order_code: "Order Code"
+        total_value: "Total Value"
+        total_quantity: "Total Quantity"
+        order_date: "Order Date"
+        shipping_address: "Shipping Address"
+        order_status: "Order Status"
+        update_status: "Update Status"
+        change_order_status: "Change"
+      update:
+        update_success: "Update order's status success"
+        update_fail: "Cannot update order's status"
   time:
     formats:
       defaults: "%d/%m/%Y"
