@@ -1,0 +1,52 @@
+<%= provide :title, t("order_list") %>
+<h1><%= t "order_list" %></h1>
+
+<table class="table table-hover table-striped admin-manage-orders">
+  <thead>
+    <tr>
+      <th><%= t "table_index" %></th>
+      <th><%= t ".order_code" %></th>
+      <th><%= t ".total_value" %></th>
+      <th><%= t ".total_quantity" %></th>
+      <th><%= t ".order_date" %></th>
+      <th><%= t ".shipping_address" %></th>
+      <th class="order-status-title"><%= t ".order_status" %></th>
+      <th><%= t ".update_status" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @orders.present? %>
+      <% @orders.each_with_index do |order, index| %>
+        <tr>
+          <td>
+            <% params[:page] ||= "1" %>
+            <%= create_index params[:page], index, Settings.admin.orders_list.per_page %>
+          </td>
+          <td><%= order.id %></td>
+          <td><%= number_to_currency order.total_money %></td>
+          <td></td>
+          <td><%= order.created_at %></td>
+          <td><%= order.addressbook_id %></td>
+          <td>
+            <span class="order-<%= order.status %>"><%= order.status %></span>
+          </td>
+          <td>
+            <%= form_tag admin_order_path(order), method: :put do %>
+              <div class="col-md-9 row">
+                <%= select_tag :status, options_for_select(Order.statuses, params[:status]),
+                  class: "form-control" %>
+              </div>
+              <div class="col-md-3 row">
+                <%= submit_tag t(".change_order_status"), class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr><td colspan="8" class="no-data"><%= t "no_data" %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @orders, theme: "twitter-bootstrap-4" %>

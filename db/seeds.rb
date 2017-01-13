@@ -31,3 +31,12 @@ Category.create! name: :novel, description: "mo ta novel", depth: 1, left: 9, ri
   Product.create! name: name, price: 15000000, description: "mo ta #{name}",
     quantity: 99, category_id: 6
 end
+
+10.times do
+  fullname = Faker::Name::name_with_middle
+  telephone = Faker::PhoneNumber.cell_phone
+  address = Faker::Address.street_address
+  user_id = rand 21 + 1
+  AddressBook.create! fullname: fullname, telephone: telephone,
+    address: address, user_id: user_id
+end

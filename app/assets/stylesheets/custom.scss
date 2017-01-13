@@ -23,6 +23,8 @@ table{
   border-collapse: separate;
   th{
     text-align: center;
+    height: 30px;
+    line-height: 30px !important;
   }
   td{
     border: solid 1px #ddd;
