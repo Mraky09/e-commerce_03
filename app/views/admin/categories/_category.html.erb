@@ -12,12 +12,12 @@
   <td><%= category.description %></td>
   <td class="align-text-center">
     <%= link_to "#category-modal-#{category.id}", data: {toggle: :modal},
-      class: "text-normal btn-edit-category" do %>
+      class: "btn-edit-category btn btn-warning" do %>
       <span class="glyphicon glyphicon-edit"></span>
     <% end %>
   </td>
   <td class="align-text-center">
-    <%= link_to admin_category_path(category), class: "text-danger btn-delete-category" do %>
+    <%= link_to admin_category_path(category), class: "btn-delete-category btn btn-danger" do %>
       <span class="glyphicon glyphicon-trash"></span>
     <% end %>
   </td>
