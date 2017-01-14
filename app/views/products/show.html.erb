@@ -20,6 +20,7 @@
               <span class="fa fa-star"></span>
             </div>
             <span class="review-no"><%= t ".reviews" %></span>
+            <%= social_share_button_tag @product.name %>
           </div>
           <p class="product-description"><%= @product.description %></p>
           <h4 class="price">current price: <span><%= number_to_currency @product.price %></span></h4>
