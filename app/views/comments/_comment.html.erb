@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  <strong><%= comment.user.name %></strong> <span class="text-muted"> <%= t ".comment_at" %> <%= time_ago_in_words(comment.created_at) %>
+          <%= t ".ago" %></span>
+  </div>
+  <div class="panel-body">
+    <%= comment.content %>
+  </div>
+</div>
