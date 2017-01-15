@@ -15,5 +15,6 @@ Rails.application.routes.draw do
 
   resources :products
   resources :users, except: [:destroy]
+  resources :requests
   devise_for :users
 end
