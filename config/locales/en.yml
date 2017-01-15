@@ -13,6 +13,7 @@ en:
   contact: "Contact"
   fake_para: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem saepe itaque, impedit assumenda molestiae. Porro, iste? Ipsa facilis, officia corporis repudiandae, doloremque quos incidunt, ea, hic non unde quae quisquam."
   create: "Create"
+  confirm_delete: "Are you sure you want delete this item?"
   category_list: "Manage Categories"
   product_list : "Manage Products"
   order_list: "Manage Orders"
@@ -30,6 +31,7 @@ en:
   something_wrong: "Something went wrong"
   create_cate_error: "You might insert an existed category or its name is over 150 characters."
   dont_delete: "OK, We'll not delete your data"
+  create_comment_error: "Can't create comment!"
   static_pages:
     home:
       hot_products: "Hot Selling Products"
@@ -175,6 +177,8 @@ en:
       add_to_cart: "add to cart"
       reviews: "reviews"
       current_price: "Current price"
+      write_comment: "Write your comment"
+      comment: "Comment"
   requests:
     create:
       request_success: "Your request has been registered"
@@ -190,3 +194,9 @@ en:
       customer_info: "Please enter your information"
     create:
       orders_create_successfully: "Your order are successully created!"
+  comments:
+    comment:
+      comment_at: "Comment at"
+      ago: "ago"
+    destroy:
+      success: "Deleted comment!"

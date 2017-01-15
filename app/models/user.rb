@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   enum role: [:admin, :user]
 
+  before_save :set_default_role
+
   ratyrate_rater
 
   def role? role
@@ -24,5 +26,14 @@ class User < ApplicationRecord
         user.save
       end
     end
+  end
+
+  def is_admin_user?
+    role = :admin
+  end
+
+  private
+  def set_default_role
+    self.role ||= :user
   end
 end

@@ -7,5 +7,6 @@ class ProductsController < ApplicationController
       session[:recent].deleted_at 0
     end
     session[:recent].push @product.id unless session[:recent].include? @product.id
+    @comments = @product.comments.order created_at: :DESC
   end
 end

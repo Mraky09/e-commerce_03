@@ -54,3 +54,27 @@
     </tbody>
   </table>
 </div>
+<div class="col-md-2">
+
+</div>
+<div class="col-md-10" id="comments">
+  <%= render @comments %>
+</div>
+
+<div class="col-md-2">
+</div>
+<div class="col-md-10">
+  <% if user_signed_in? %>
+    <h2><%= t ".write_comment" %></h2>
+    <%= form_for [@product, @product.comments.new], method: :post, remote: true do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit t(".comment"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= t ".login_to_comment" %>
+  <% end %>
+</div>
