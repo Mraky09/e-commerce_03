@@ -2,6 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :load_recent_view_session, :load_view_object
 
+  def after_sign_in_path_for resource
+    if resource.admin?
+      admin_root_path
+    else
+      session[:previous_url] || root_path
+    end
+  end
+
   private
   def is_admin?
     authenticate_user!

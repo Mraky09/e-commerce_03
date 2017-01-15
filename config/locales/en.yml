@@ -60,6 +60,9 @@ en:
       profile: "Profile"
       purchase_history: "Purchases History"
       requests: "Requests"
+      request_product: "Request new Product"
+      send_request_product: "Send suggestion"
+      close: "Close"
     admin_menu_bar:
       dashboard: "Dashboard"
       categories: "Categories"
@@ -149,3 +152,7 @@ en:
       feature_value: "Feature description"
       add_to_cart: "add to cart"
       reviews: "reviews"
+  requests:
+    create:
+      request_success: "Your request has been registered"
+      request_failed: "Your request hasn't been registered"

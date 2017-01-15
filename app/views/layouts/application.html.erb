@@ -11,6 +11,11 @@
 
   <body data-spy="scroll" data-target="#nav_test">
     <%= render "layouts/header" %>
+    <div class="container flash-text">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+    </div>
     <div class="container frontend-content">
       <%= render "layouts/menu_bar" %>
       <%= yield %>

@@ -6,12 +6,12 @@
   <td><%= product.category.name %></td>
   <td></td>
   <td class="align-text-center">
-    <%= link_to "#product-modal-#{product.id}", data: {toggle: :modal}, class: "text-normal btn-edit-product" do %>
+    <%= link_to "#product-modal-#{product.id}", data: {toggle: :modal}, class: "btn btn-warning btn-edit-product" do %>
       <span class="glyphicon glyphicon-edit"></span>
     <% end %>
   </td>
   <td class="align-text-center">
-    <%= link_to admin_product_path(product), class: "text-danger btn-delete-product" do %>
+    <%= link_to admin_product_path(product), class: "btn btn-danger btn-delete-product" do %>
       <span class="glyphicon glyphicon-trash"></span>
     <% end %>
   </td>

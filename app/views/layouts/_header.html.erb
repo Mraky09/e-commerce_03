@@ -38,7 +38,6 @@
       </div>
     </div>
 
-    <!-- Modal Login -->
     <div class="modal fade" id="myModalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -79,6 +78,27 @@
         </div>
       </div>
     </div>
+
+    <%= form_tag requests_path, method: :post do %>
+      <div class="modal fade" id="myModalRequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel"><%= t ".request_product" %></h4>
+            </div>
+            <div class="modal-body">
+              <%= label_tag :content, "Your Request" %>
+              <%= text_area_tag :content, params[:content], rows: 5, class: "form-control", required: true %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal"><%= t ".close" %></button>
+              <%= submit_tag t(".send_request_product"), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 
   <nav class="navbar navbar-default">
@@ -90,7 +110,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to t("brand"), root_path, class: "navbar-brand" %>
+        <%= link_to t("brand"), root_path, class: "navbar-brand title-link" %>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -104,36 +124,38 @@
           <% if user_signed_in? %>
             <% unless current_user.admin? %>
               <li>
-                <a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                <a href="/cart" class="title-link"><span class="glyphicon glyphicon-shopping-cart"></span></a>
               </li>
             <% end %>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <a href="#" class="dropdown-toggle title-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="glyphicon glyphicon-user"></span> <%= t ".account" %> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to t(".profile"), current_user %></li>
                 <li><a href="#"><%= t ".purchase_history" %></a></li>
-                <li><a href="#"><%= t ".requests" %></a></li>
+                <li>
+                  <%= link_to t(".requests"), "#", data: {toggle: :modal, target: "#myModalRequest"} %>
+                </li>
               </ul>
             </li>
             <li>
-              <%= link_to destroy_user_session_path , method: :delete do %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "title-link" do %>
                 <span class="glyphicon glyphicon-log-out"></span> <%= t ".logout" %>
               <% end %>
             </li>
           <% else %>
             <li>
-              <a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+              <a href="/cart" class="title-link"><span class="glyphicon glyphicon-shopping-cart"></span></a>
             </li>
             <li>
-              <%= link_to "", data: {toggle: "modal", target: "#myModalSignup"} do %>
+              <%= link_to "", data: {toggle: "modal", target: "#myModalSignup"}, class: "title-link" do %>
                 <span class="glyphicon glyphicon-exclamation-sign"></span>
                   <%= t ".signup" %>
               <% end %>
             </li>
             <li>
-              <%= link_to "", data: {toggle: "modal", target: "#myModalLogin"} do %>
+              <%= link_to "", data: {toggle: "modal", target: "#myModalLogin"}, class: "title-link" do %>
                 <span class="glyphicon glyphicon-log-in"></span>
                   <%= t ".login" %>
               <% end %>
