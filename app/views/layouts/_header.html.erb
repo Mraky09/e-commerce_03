@@ -64,6 +64,8 @@
                 <% end -%>
 
                 <%= f.submit t(".login"), class: "form-control btn btn-primary" %>
+                <%= link_to t(".sign_in"), user_facebook_omniauth_authorize_path,
+                  class: "fa fa-facebook-official"%>
               <% end %>
             </div>
             <div class="col-md-4">

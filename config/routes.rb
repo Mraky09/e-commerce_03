@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   resources :products
   resources :users, except: [:destroy]
   resources :requests
-  devise_for :users
+  devise_for :users,
+    :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 end
