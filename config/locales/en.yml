@@ -125,6 +125,7 @@ en:
         avatar: "Avatar"
         admin_users_search: "Search user by name..."
     orders:
+      orders_create_successfully: "Your order are successully created!"
       index:
         order_code: "Order Code"
         total_value: "Total Value"
@@ -165,3 +166,12 @@ en:
     create:
       request_success: "Your request has been registered"
       request_failed: "Your request hasn't been registered"
+  orders:
+    new:
+      checkout: "Checkout"
+      cart: "Cart"
+      your_cart: "Your cart"
+      buy_price: "Product price"
+      quantity: "Quantity"
+      total: "Total price"
+      customer_info: "Please enter your information"

@@ -3,6 +3,8 @@ class User < ApplicationRecord
     :rememberable, :validatable, :omniauthable
   has_many :address_books
   has_many :requests
+  has_many :orders
+
   enum role: [:admin, :user]
 
   def role? role

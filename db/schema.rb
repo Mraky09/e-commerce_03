@@ -55,12 +55,11 @@ ActiveRecord::Schema.define(version: 20170116025731) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "addressbook_id"
+    t.string   "shipping_address"
     t.integer  "status"
     t.float    "total_money"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["addressbook_id"], name: "index_orders_on_addressbook_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
