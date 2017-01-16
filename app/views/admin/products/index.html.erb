@@ -78,7 +78,11 @@
     <th><%= t "delete" %></th>
   </thead>
   <tbody id="category-list">
-    <%= render @products %>
+    <% if @products.any? %>
+      <%= render @products %>
+    <% else %>
+      <tr><td colspan="8" class="no-data"><%= t "no_data" %></td></tr>
+    <% end %>
   </tbody>
 </table>
 

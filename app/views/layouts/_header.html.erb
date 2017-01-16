@@ -72,6 +72,11 @@
                 <%= t ".signup" %>
               </a>
               <p><a href="#"><%= t ".forgot_password" %></a></p>
+              <p>
+                <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary" do %>
+                  <i class="fa fa-facebook-square" aria-hidden="true"></i> <%= t "login_facebook" %>
+                <% end %>
+              </p>
             </div>
             <div class="clr"></div>
           </div>

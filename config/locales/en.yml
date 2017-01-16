@@ -1,4 +1,5 @@
 en:
+  login_facebook: "Login with facebook"
   wrong_authorize: "You cannot access that page"
   edit: "Edit"
   delete: "Delete"
