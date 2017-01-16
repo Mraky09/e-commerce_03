@@ -32,6 +32,7 @@ gem "ransack"
 gem "bootstrap4-kaminari-views"
 gem "roo"
 gem "omniauth-facebook"
+gem "ratyrate"
 
 group :development, :test do
   gem "rubocop", require: false

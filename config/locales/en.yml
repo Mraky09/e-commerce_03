@@ -162,6 +162,7 @@ en:
       feature_value: "Feature description"
       add_to_cart: "add to cart"
       reviews: "reviews"
+      current_price: "Current price"
   requests:
     create:
       request_success: "Your request has been registered"

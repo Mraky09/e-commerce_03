@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :specifications, reject_if: :all_blank,
     allow_destroy: true
 
+  ratyrate_rateable "quality"
+
   class << self
     def hot_trend
       date = Time.now - Settings.hot_trend.day
