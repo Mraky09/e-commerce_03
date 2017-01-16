@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "static_pages#show", page: "home"
+  post "/rate", to: "rater#create", as: "rate"
   get "/pages/*page", to: "static_pages#show"
   get "/cart", to: "cart#index"
   post "/cart/:id", to: "cart#create"

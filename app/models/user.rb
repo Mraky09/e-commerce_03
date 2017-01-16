@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   enum role: [:admin, :user]
 
+  ratyrate_rater
+
   def role? role
     role.include? role.to_s
   end
