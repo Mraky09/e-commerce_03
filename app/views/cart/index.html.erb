@@ -44,6 +44,6 @@
 
 <div class="col-md-2">
   <div id="nav_test" data-spy="affix" class="visible-lg visible-md">
-    <button class="btn btn-danger create-order"><%= t ".checkout" %></button>
+    <%= link_to t(".checkout"), new_order_path, class: "btn btn-danger create-order" %>
   </div>
 </div>

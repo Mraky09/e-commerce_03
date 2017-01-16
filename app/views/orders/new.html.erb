@@ -1,0 +1,94 @@
+<% provide :title, t(".cart") %>
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home"><%= t ".your_cart" %></a></li>
+  <li><a data-toggle="tab" href="#menu1"><%= t ".information" %></a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <div class="col-sm-10 col-sm-offset-1">
+      <h3><%= t ".your_cart" %></h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="product-img-title"></th>
+            <th></th>
+            <th class="product-price-title"><%= t ".buy_price" %></th>
+            <th class="product-quantity-title"><%= t ".quantity" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @product_carts.any? %>
+            <% @product_carts.each do |product, quantity| %>
+              <tr>
+                <td>
+                  <% if product.image.present? %>
+                    <%= image_tag product.image.url, size: Settings.format.order_picture_size %>
+                  <% else %>
+                    <img src="https://api.fnkr.net/testimg/120x120/333/FFF/?text=img+placeholder">
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to product.name, product_path(product), {class: "product-name"} %>
+                  <br>
+                  <%= link_to "", "/cart/#{product.id}",
+                    method: :delete, data: {confirm: t(".delete_confirm")},
+                    class: "btn btn-danger fa fa-trash-o" %>
+                </td>
+                <td class="product-price"><%= number_to_currency product.price %></td>
+                <td>
+                  <%= quantity %>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="text-right col-sm-12 text-lg">
+                  <%= t ".total" %></td>
+                <td class="text-right col-sm-12 text-lg"><%= @total_pay %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr><td colspan="4"><%= t "no_products" %></td></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+      <h3 class="head"><%= t ".customer_info" %></h3>
+        <div class="col-sm-10 col-sm-offset-1">
+          <%= form_tag orders_path, method: :post do %>
+            <div class="row form-group">
+              <div class="col-sm-4">
+                <%= label_tag :name %>
+              </div>
+              <div class="col-sm-8">
+                <%= text_field_tag :name, @user.name, readonly: true,
+                  class: "form-control" %>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-4">
+                <%= label_tag :email %>
+              </div>
+              <div class="col-sm-8">
+                <%= text_field_tag :email, @user.email, readonly: true,
+                  class: "form-control"  %>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-4">
+                <%= label_tag :shipping_address %>
+              </div>
+              <div class="col-sm-8">
+                <%= text_field_tag :address, params[:shipping_address], required: true,
+                  class: "form-control" %>
+              </div>
+            </div class="row form-group">
+            <div class="pull-right">
+              <%= submit_tag t(".checkout"), class: "btn btn-danger" %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

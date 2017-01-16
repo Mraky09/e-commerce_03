@@ -48,7 +48,7 @@
                       <% end %>
                     </p>
                     <h3 class="box-title">
-                      <%= link_to product.name, product_path %>
+                      <%= link_to product.name, product_path(product) %>
                     </h3>
                     <p class="box-price" data-toggle="tooltip" data-placement="bottom" title="">
                       <%= number_to_currency product.price %>

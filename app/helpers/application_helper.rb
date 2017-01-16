@@ -30,6 +30,10 @@ module ApplicationHelper
     (object.to_i - 1) * per_page + index + 1
   end
 
+  def calc_price_of_order_detail product, quantity
+    product.price * quantity.to_i
+  end
+
   def load_categories_menu
     @tree = ""
     tree Category.all
