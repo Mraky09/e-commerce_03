@@ -40,3 +40,9 @@ end
   AddressBook.create! fullname: fullname, telephone: telephone,
     address: address, user_id: user_id
 end
+
+users = User.take 6
+15.times do |n|
+  content = Faker::Lorem.sentence
+  users.each{|user| user.requests.create! content: content, status: :pending}
+end

@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20170116042439) do
   create_table "requests", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "content",    limit: 45
+    t.integer  "status"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["user_id"], name: "index_requests_on_user_id"

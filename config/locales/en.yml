@@ -76,6 +76,19 @@ en:
     formats:
       defaults: "%d/%m/%Y"
   admin:
+    requests:
+      index:
+        manage_requests: "Manage Requests"
+        username: "Username"
+        content: "Content"
+        created_at: "Created at"
+        status: "Status"
+        update_status: "Update status"
+        accept: "Accept"
+        reject: "Reject"
+      update:
+        success: "Update request's status success"
+        not_found: "Cannot find request"
     excel:
       create:
         product_import: "Product imported"
@@ -125,7 +138,6 @@ en:
         avatar: "Avatar"
         admin_users_search: "Search user by name..."
     orders:
-      orders_create_successfully: "Your order are successully created!"
       index:
         order_code: "Order Code"
         total_value: "Total Value"
@@ -176,3 +188,5 @@ en:
       quantity: "Quantity"
       total: "Total price"
       customer_info: "Please enter your information"
+    create:
+      orders_create_successfully: "Your order are successully created!"

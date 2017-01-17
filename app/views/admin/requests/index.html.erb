@@ -1,0 +1,52 @@
+<% provide :title, t(".manage_requests") %>
+
+<h1><%= t ".manage_requests" %></h1>
+
+<table class="table table-hover table-striped manage-requests">
+  <thead>
+    <tr>
+      <th><%= t "table_index" %></th>
+      <th><%= t ".username" %></th>
+      <th><%= t ".content" %></th>
+      <th><%= t ".created_at" %></th>
+      <th><%= t ".status" %></th>
+      <th><%= t ".update_status" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @requests.any? %>
+      <% @requests.each_with_index do |request, index| %>
+        <tr>
+          <td>
+            <% params[:page] ||= "1" %>
+            <%= create_index params[:page], index, Settings.admin.requests_list.per_page %>
+          </td>
+          <td><%= request.user.name %></td>
+          <td><%= request.content %></td>
+          <td><%= l request.created_at, format: :long %></td>
+          <td>
+            <span class="request-<%= request.status %>"><%= request.status %></span>
+          </td>
+          <td>
+            <div class="form-accept">
+              <%= form_for [:admin, request], method: :patch do |f| %>
+                <%= f.hidden_field :status, value: :accepted  %>
+                <%= f.submit t(".accept"), class: "btn btn-success", data: {confirm: t("you_sure")} %>
+              <% end %>
+            </div>
+            <div class="form-reject">
+              <%= form_for [:admin, request], method: :patch do |f| %>
+                <%= f.hidden_field :status, value: :rejected  %>
+                <%= f.submit t(".reject"), class: "btn btn-danger", data: {confirm: t("you_sure")} %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr><td colspan="6" class="no-data"><%= t "no_data" %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @requests, theme: "twitter-bootstrap-4" %>
