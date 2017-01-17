@@ -1,6 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   before_action :authenticate_user!, :is_admin?
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create]
   layout "admin"
 
   def index
@@ -8,6 +8,12 @@ class Admin::CategoriesController < ApplicationController
     @search = Category.ransack params[:q]
     @categories = @search.result.includes(:products).order(:left)
       .page(params[:page]).per Settings.admin.categories_list.per_page
+  end
+
+  def edit
+    respond_to do |format|
+      format.html{render partial: "category_edit_form", locals: {category: @category}}
+    end
   end
 
   def create
@@ -42,6 +48,6 @@ class Admin::CategoriesController < ApplicationController
 
   private
   def category_params
-    params.permit :name, :description
+    params.require(:category).permit :name, :description
   end
 end

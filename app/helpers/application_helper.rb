@@ -26,8 +26,8 @@ module ApplicationHelper
       data: {id: id, fields: fields.delete("\n")}
   end
 
-  def create_index object, index, per_page
-    (object.to_i - 1) * per_page + index + 1
+  def index_for counter, page, per_page
+    (page - 1) * per_page + counter + 1
   end
 
   def calc_price_of_order_detail product, quantity

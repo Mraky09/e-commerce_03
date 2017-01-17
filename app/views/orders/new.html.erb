@@ -40,15 +40,15 @@
                   <%= quantity %>
                 </td>
               </tr>
-              <tr>
-                <td colspan="3" class="text-right col-sm-12 text-lg">
-                  <%= t ".total" %></td>
-                <td class="text-right col-sm-12 text-lg"><%= @total_pay %></td>
-              </tr>
             <% end %>
           <% else %>
             <tr><td colspan="4"><%= t "no_products" %></td></tr>
           <% end %>
+          <tr>
+            <td colspan="3" class="text-right col-sm-12 text-lg">
+              <%= t ".total" %></td>
+            <td class="text-right col-sm-12 text-lg"><%= @total_pay %></td>
+          </tr>
         </tbody>
       </table>
     </div>

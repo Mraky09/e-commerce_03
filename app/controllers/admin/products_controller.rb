@@ -15,6 +15,19 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+
+  def new
+    respond_to do |format|
+      format.html{render partial: "product_form", locals: {product: @product}}
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.html{render partial: "product_edit_form", locals: {product: @product}}
+    end
+  end
+
   def new
     @categories = Category.select(:id, :name, :depth)
     @product = Product.new
@@ -42,11 +55,19 @@ class Admin::ProductsController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    if @product.destroy
+      flash[:success] = t ".deleted"
+    else
+      flash[:danger] = t ".fail_to_delete"
+    end
+    redirect_to :back
+  end
+
   private
   def product_params
     params.required(:product).permit :name, :quantity, :category_id, :description,
-      :price, :image, specifications_attributes: [:id, :feature_name,
-      :feature_value, :_destroy]
+      :price, :image, specifications_attributes: [:id, :feature_name, :feature_value, :_destroy]
   end
 
   def load_all_leaf_categories
