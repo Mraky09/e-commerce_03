@@ -5,7 +5,13 @@
         <div class="preview col-md-6">
 
           <div class="preview-pic tab-content">
-            <div class="tab-pane active" id="pic-1"><%= image_tag @product.image.url if @product.image? %></div>
+            <div class="tab-pane active" id="pic-1">
+              <% if @product.image? %>
+                <%= image_tag @product.image.url %>
+              <% else %>
+                <img src="https://api.fnkr.net/testimg/200x170/00CED1/FFF/?text=img+placeholder">
+              <% end %>
+            </div>
           </div>
 
         </div>

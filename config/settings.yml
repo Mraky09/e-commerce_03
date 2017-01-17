@@ -31,3 +31,6 @@ email:
   name: "Your Gmail account name"
   password: "Your gmail password"
   from: "Your from email system"
+category:
+  display_product:
+    per_page: 12
