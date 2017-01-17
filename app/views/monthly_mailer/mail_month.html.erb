@@ -1,0 +1,22 @@
+<h2><%= t ".order_admin_end_month" %></h2>
+<% @hot_trend_products.each do |product| %>
+  <ul>
+    <li><%= t "hot_product_in_month"%>: <%= product.name %></li>
+  </ul>
+<%end%>
+<% @orders.each do |order| %>
+  <table>
+    <tr>
+      <td><%= t ".order_id" %></td>
+      <td><%= t ".total_price"%></td>
+      <td><%= t "user" %></td>
+      <td><%= t "shipping_address"%></td>
+    </tr>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.total_money %></td>
+      <td><%= order.user_name %></td>
+      <td><%= order.shipping_address %></td>
+    </tr>
+  </table>
+<%end%>

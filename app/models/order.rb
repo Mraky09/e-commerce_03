@@ -6,6 +6,11 @@ class Order < ApplicationRecord
   validates :shipping_address, presence: true
 
   enum status: [:progress, :shipping, :delivered, :rejected]
+  delegate :name, to: :user, prefix: true, allow_nil: true
+
+  scope :order_in_month, ->(start_date, end_date) do
+    where("date(updated_at) > ? AND date(updated_at) < ?", start_date.to_s, end_date.to_s)
+  end
 
   def calc_total_pay product_carts
     each_amount = []
