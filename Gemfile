@@ -33,6 +33,7 @@ gem "bootstrap4-kaminari-views"
 gem "roo"
 gem "omniauth-facebook"
 gem "ratyrate"
+gem "friendly_id"
 
 group :development, :test do
   gem "rubocop", require: false
