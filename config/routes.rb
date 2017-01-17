@@ -18,10 +18,13 @@ Rails.application.routes.draw do
     resources :requests
   end
 
-  resources :products
-  resources :users, except: [:destroy]
+  resources :products do
+    resources :comments
+  end
+
   resources :requests
   resources :orders
   devise_for :users,
     controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  resources :users, except: [:destroy]
 end

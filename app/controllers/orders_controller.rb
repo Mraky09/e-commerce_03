@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
 
   def new
     @product_carts = @session_cart.map do |id, quantity|
-      [Product.find_by(id: id), quantity] end
+      [Product.find_by(id: id), quantity]
+    end
     @total_pay = @order.calc_total_pay @product_carts
   end
 

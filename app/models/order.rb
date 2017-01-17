@@ -20,7 +20,8 @@ class Order < ApplicationRecord
 
   def update_order! session_cart, address, _phone
     product_carts = session_cart.map do |id, quantity|
-      [Product.find_by(id: id), quantity] end
+      [Product.find_by(id: id), quantity]
+    end
     update_attributes total_money: calc_total_pay(product_carts),
       shipping_address: address
     if save
