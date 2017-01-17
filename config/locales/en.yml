@@ -203,3 +203,12 @@ en:
       ago: "ago"
     destroy:
       success: "Deleted comment!"
+  report: "Report from your store"
+  monthly_mailer:
+    mail_month:
+      order_admin_end_month: "Order report"
+      order_id: "Order ID"
+      total_price: "Total price"
+  hot_product_in_month: "Hotest product"
+  user: "User"
+  shipping_address: "Shipping address"

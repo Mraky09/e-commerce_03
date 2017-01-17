@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   ratyrate_rater
 
+  scope :email_of_all_admins, -> (){select(:id, :email).where role: :admin}
+
   def role? role
     role.include? role.to_s
   end

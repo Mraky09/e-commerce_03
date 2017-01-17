@@ -34,6 +34,8 @@ gem "roo"
 gem "omniauth-facebook"
 gem "ratyrate"
 gem "friendly_id"
+gem "whenever"
+gem "sidekiq"
 
 group :development, :test do
   gem "rubocop", require: false
