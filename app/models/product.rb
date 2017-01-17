@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   belongs_to :category
   has_many :specifications, dependent: :destroy, inverse_of: :product
   has_many :comments
@@ -9,6 +12,10 @@ class Product < ApplicationRecord
     allow_destroy: true
 
   ratyrate_rateable "quality"
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
   class << self
     def hot_trend
