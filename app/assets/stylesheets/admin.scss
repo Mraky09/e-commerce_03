@@ -19,6 +19,10 @@
     padding: 15px;
     color: #fff;
     font-weight: bold;
+    transition: 0.2s;
+    &:hover{
+      padding-left: 30px;
+    }
     span{
       display: block;
       width: 16px;
@@ -67,15 +71,11 @@
       padding: 5px 10px;
       border-radius: 5px;
     }
-    .order-buying{
+    .order-rejected{
       @extend .order-text;
-      background: red;
+      background: brown;
     }
-    .order-ordered{
-      @extend .order-text;
-      background: #337ab7;
-    }
-    .order-progressing{
+    .order-progress{
       @extend .order-text;
       background: orange;
     }
@@ -105,6 +105,31 @@
     input[type="submit"]{
       border-top-left-radius: 0px;
       border-bottom-left-radius: 0px;
+    }
+  }
+  .manage-requests{
+    .form-accept{
+      float: left;
+    }
+    .form-reject{
+      float: right;
+    }
+    .request-status{
+      color: #fff;
+      border-radius: 4px;
+      padding: 3px;
+    }
+    .request-pending{
+      @extend .request-status;
+      background: blue;
+    }
+    .request-accepted{
+      @extend .request-status;
+      background: green;
+    }
+    .request-rejected{
+      @extend .request-status;
+      background: red;
     }
   }
 }
