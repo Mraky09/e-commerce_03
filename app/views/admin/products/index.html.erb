@@ -79,6 +79,7 @@
   </thead>
   <tbody id="category-list">
     <% if @products.any? %>
+      <% @index = 0 %>
       <%= render @products %>
     <% else %>
       <tr><td colspan="8" class="no-data"><%= t "no_data" %></td></tr>

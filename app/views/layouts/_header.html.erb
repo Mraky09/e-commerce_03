@@ -138,7 +138,9 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to t(".profile"), current_user %></li>
-                <li><a href="#"><%= t ".purchase_history" %></a></li>
+                <li>
+                  <%= link_to t(".purchase_history"), orders_path %>
+                </li>
                 <li>
                   <%= link_to t(".requests"), "#", data: {toggle: :modal, target: "#myModalRequest"} %>
                 </li>

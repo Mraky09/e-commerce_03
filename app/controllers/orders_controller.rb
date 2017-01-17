@@ -1,6 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, :load_user
-  before_action :load_cart, :load_order
+  before_action :load_cart, :load_order, except: :index
+
+  def index
+    @search = Order.ransack params[:q]
+    @orders = @search.result.where("user_id = ?", current_user).order(created_at: :desc)
+      .page(params[:page]).per Settings.user.orders_history.per_page
+  end
 
   def new
     @product_carts = @session_cart.map do |id, quantity|
