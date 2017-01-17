@@ -1,4 +1,9 @@
 class RequestsController < ApplicationController
+  def index
+    @requests = Request.order(created_at: :desc).where("user_id = ?", current_user.id)
+      .page(params[:page]).per Settings.user.requests.per_page
+  end
+
   def create
     @request = current_user.requests.build request_params
     if @request.save

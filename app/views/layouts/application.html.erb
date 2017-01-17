@@ -17,8 +17,12 @@
       <% end %>
     </div>
     <div class="container frontend-content">
-      <%= render "layouts/menu_bar" %>
-      <%= yield %>
+      <div class="col-md-2">
+        <%= render "layouts/menu_bar" %>
+      </div>
+      <div class="col-md-10">
+        <%= yield %>
+      </div>
     </div>
     <%= render "layouts/footer" %>
   </body>

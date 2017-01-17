@@ -63,7 +63,8 @@ en:
       account: "Account"
       profile: "Profile"
       purchase_history: "Purchases History"
-      requests: "Requests"
+      requests: "Create Request"
+      my_requests: "My Requests"
       request_product: "Request new Product"
       send_request_product: "Send suggestion"
       close: "Close"
@@ -180,6 +181,8 @@ en:
       write_comment: "Write your comment"
       comment: "Comment"
   requests:
+    index:
+      my_requests: "My Requests"
     create:
       request_success: "Your request has been registered"
       request_failed: "Your request hasn't been registered"
