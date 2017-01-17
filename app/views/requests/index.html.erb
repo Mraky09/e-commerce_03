@@ -1,0 +1,35 @@
+<% provide :title, t(".my_requests") %>
+
+<h1><%= t ".my_requests" %></h1>
+
+<table class="table table-hover table-striped user-view-requests">
+  <thead>
+    <tr>
+      <th><%= t "table_index" %></th>
+      <th><%= t ".content" %></th>
+      <th><%= t ".created_at" %></th>
+      <th><%= t ".status" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @requests.any? %>
+      <% @requests.each_with_index do |request, index| %>
+        <tr>
+          <td>
+            <% params[:page] ||= "1" %>
+            <%= create_index params[:page], index, Settings.user.requests.per_page %>
+          </td>
+          <td><%= request.content %></td>
+          <td class="no-data"><%= l request.created_at, format: :long %></td>
+          <td class="no-data">
+            <span class="request request-<%= request.status %>"><%= request.status %></span>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr><td colspan="4" class="no-data"><%= t "no_data" %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @requests, theme: "twitter-bootstrap-4" %>

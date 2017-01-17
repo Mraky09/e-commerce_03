@@ -17,6 +17,8 @@ max_item_for_recent: 10
 user:
   avatar_size: 70
 user:
+  requests:
+    per_page: 10
   login:
     app_id: "404823109860244"
     app_secrete: "2a978a6fc2f9234cfb76d5cf5b596146"

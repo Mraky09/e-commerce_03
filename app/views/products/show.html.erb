@@ -1,4 +1,4 @@
-<div class="col-md-10">
+<div class="col-md-12">
   <div class="card">
     <div class="container-fliud">
       <div class="wrapper row">
@@ -41,29 +41,29 @@
       </tr>
     </thead>
     <tbody>
-      <% @specifications.each do |specification| %>
-        <tr>
-          <td class="col-md-4 title-bold">
-            <%= specification.feature_name %>
-          </td>
-          <td  class="col-md-8">
-            <%= specification.feature_value %>
-          </td>
-        </tr>
+      <% if @specifications.any? %>
+        <% @specifications.each do |specification| %>
+          <tr>
+            <td class="col-md-4 title-bold">
+              <%= specification.feature_name %>
+            </td>
+            <td  class="col-md-8">
+              <%= specification.feature_value %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr><td colspan="2" class="no-data"><%= t "no_data" %></td></tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<div class="col-md-2">
 
-</div>
-<div class="col-md-10" id="comments">
+<div class="col-md-12" id="comments">
   <%= render @comments %>
 </div>
 
-<div class="col-md-2">
-</div>
-<div class="col-md-10">
+<div class="col-md-12">
   <% if user_signed_in? %>
     <h2><%= t ".write_comment" %></h2>
     <%= form_for [@product, @product.comments.new], method: :post, remote: true do |f| %>
