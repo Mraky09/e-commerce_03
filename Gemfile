@@ -37,6 +37,8 @@ gem "friendly_id"
 gem "whenever"
 gem "sidekiq"
 gem "paranoia"
+gem "chartkick"
+gem "groupdate", github: "ankane/groupdate", branch: "sqlite"
 
 group :development, :test do
   gem "rubocop", require: false
