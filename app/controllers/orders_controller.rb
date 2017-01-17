@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  include OrdersHelper
   before_action :authenticate_user!, :load_user
   before_action :load_cart, :load_order, except: :index
 
@@ -19,6 +20,7 @@ class OrdersController < ApplicationController
     if @order.update_order! @session_cart,
       params[:address], params[:phone]
       flash[:success] = t ".orders_create_successfully"
+      send_order_information_to_chatwork @order
     else
       flash[:danger] = @order.errors.full_messages
     end

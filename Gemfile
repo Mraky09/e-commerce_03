@@ -39,6 +39,7 @@ gem "sidekiq"
 gem "paranoia"
 gem "chartkick"
 gem "groupdate", github: "ankane/groupdate", branch: "sqlite"
+gem "chatwork"
 
 group :development, :test do
   gem "rubocop", require: false

@@ -230,6 +230,9 @@ en:
       customer_info: "Please enter your information"
     create:
       orders_create_successfully: "Your order are successully created!"
+      a_user: "A user "
+      make_an_order: "just make an order with value "
+      to: " to "
   comments:
     comment:
       comment_at: "Comment at"
