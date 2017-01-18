@@ -221,3 +221,9 @@ en:
   hot_product_in_month: "Hotest product"
   user: "User"
   shipping_address: "Shipping address"
+  categories:
+    show:
+      product: "Product"
+      greaterthan: " Greater than"
+      lessthan: "Less than"
+      name_or_description: "Name or Description..."

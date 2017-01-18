@@ -146,6 +146,7 @@ header{
       .tab-pane{
         padding: 10px;
         .box{
+          height: 270px;
           text-align: center;
           border: 1px solid #d5d5d5;
           margin-bottom: 15px;
@@ -564,5 +565,39 @@ img{
   .order-rejected{
     @extend .order-text;
     background: brown;
+  }
+}
+
+.box{
+  height: 270px;
+  text-align: center;
+  border: 1px solid #d5d5d5;
+  margin-bottom: 15px;
+  &:hover{
+    background-color: #e5e5e5;
+  }
+  .box-img{
+    border-bottom: 1px solid #d5d5d5;
+    img{
+      display: block;
+      height: 170px;
+      width: 100%;
+    }
+  }
+  .box-title{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 18px;
+  }
+  .box-price{
+    color: #d42b55;
+    font-weight: bold;
+  }
+}
+
+.view-products-by-category{
+  .search-forms{
+    margin-bottom: 30px;
   }
 }

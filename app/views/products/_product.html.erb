@@ -1,0 +1,19 @@
+<div class="col-sm-6 col-md-3">
+  <div class="box">
+    <p class="box-img">
+      <%= link_to product_path(product) do %>
+        <% if product.image? %>
+          <%= image_tag product.image.url %>
+        <% else %>
+          <img src="https://api.fnkr.net/testimg/200x170/00CED1/FFF/?text=img+placeholder">
+        <% end %>
+      <% end %>
+    </p>
+    <h3 class="box-title">
+      <%= link_to product.name, product_path(product) %>
+    </h3>
+    <p class="box-price" data-toggle="tooltip" data-placement="bottom" title="">
+      <%= number_to_currency product.price %>
+    </p>
+  </div>
+</div>

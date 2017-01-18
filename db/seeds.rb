@@ -23,7 +23,7 @@ Category.create! name: :comic, description: Faker::Lorem.sentence,
 Category.create! name: :novel, description: Faker::Lorem.sentence,
   depth: 1, left: 9, right: 10
 
-10.times do |n|
+30.times do |n|
   name = "phone " + Faker::App.name
   price = 1000 + (rand 10000)
   quantity = 4567 + (rand 10000)

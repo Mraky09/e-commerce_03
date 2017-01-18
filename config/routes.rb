@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :requests
   resources :orders
+  resources :categories, only: :show
   devise_for :users,
     controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :users, except: [:destroy]

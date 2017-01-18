@@ -1,0 +1,30 @@
+<section class="container-fluid view-products-by-category">
+  <h1 class="text-center head"><%= @category.name %></h1>
+  <div class="search-forms container">
+    <%= search_form_for @search, url: category_path,class: "form-inline" do |f| %>
+      <div class="form-group">
+        <%= f.label :name_or_description_cont, t(".product") %>
+        <%= f.text_field :name_or_description_cont, class: "form-control", placeholder: t(".name_or_description") %><br>
+      </div>
+      <div class=" form-group">
+        <%= f.label :price_gteq, t(".greaterthan") %>
+        <%= f.text_field :price_gteq, class: "form-control" %><br>
+      </div>
+      <div class=" form-group">
+        <%= f.label :price_lteq, t(".lessthan") %>
+        <%= f.text_field :price_lteq, class: "form-control" %><br>
+      </div>
+      <div class= "form-group " >
+        <%= f.submit t("search"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row list-product">
+    <% if @products.any? %>
+      <% @products.each do |product| %>
+        <%= render "products/product", product: product %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= paginate @products, theme: "twitter-bootstrap-4" %>
+</section>
