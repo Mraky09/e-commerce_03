@@ -7,4 +7,5 @@
 //= require i18n/translations
 //= require Chart.bundle
 //= require chartkick
+//= require social-share-button
 //= require_tree .

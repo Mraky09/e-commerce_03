@@ -40,6 +40,7 @@ gem "paranoia"
 gem "chartkick"
 gem "groupdate", github: "ankane/groupdate", branch: "sqlite"
 gem "chatwork"
+gem "social-share-button"
 
 group :development, :test do
   gem "rubocop", require: false

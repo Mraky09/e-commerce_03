@@ -242,6 +242,8 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
+    social-share-button (0.8.8)
+      coffee-rails
     spring (2.0.0)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -317,6 +319,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   sidekiq
+  social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
