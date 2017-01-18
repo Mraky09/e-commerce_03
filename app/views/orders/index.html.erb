@@ -25,24 +25,7 @@
   </thead>
   <tbody>
     <% if @orders.any? %>
-      <% @orders.each_with_index do |order, index| %>
-        <tr>
-          <td>
-            <% params[:page] ||= "1" %>
-            <%= create_index params[:page], index, Settings.user.orders_history.per_page %>
-          </td>
-          <td><%= order.id %></td>
-          <td><%= l order.created_at, format: :long %></td>
-          <td><%= number_to_currency order.total_money %></td>
-          <td>
-            <%= order.order_details.group("order_id").sum(:quantity).first[1] %>
-          </td>
-          <td><%= order.shipping_address %></td>
-          <td class="no-data">
-            <span class="order-<%= order.status %>"><%= order.status %></span>
-          </td>
-        </tr>
-      <% end %>
+      <%= render @orders %>
     <% else %>
       <tr><td colspan="7" class="no-data"><%= t "no_data" %></td></tr>
     <% end %>

@@ -27,24 +27,42 @@ Category.create! name: :novel, description: Faker::Lorem.sentence,
   name = "phone " + Faker::App.name
   price = 1000 + (rand 10000)
   quantity = 4567 + (rand 10000)
-  Product.create! name: name, price: price, description: Faker::Lorem.paragraph,
+  p = Product.create! name: name, price: price, description: Faker::Lorem.paragraph,
     quantity: quantity, category_id: 2
+  3.times do
+    Specification.create! product_id: p.id, feature_name: Faker::Lorem.word,
+      feature_value: Faker::App.name
+  end
+
   name = "tablet " + Faker::App.name
   price = 1000 + (rand 1000)
   quantity = 4567 + (rand 10000)
-  Product.create! name: name, price: price, description: Faker::Lorem.paragraph,
+  p = Product.create! name: name, price: price, description: Faker::Lorem.paragraph,
     quantity: quantity, category_id: 3
+  3.times do
+    Specification.create! product_id: p.id, feature_name: Faker::Lorem.word,
+      feature_value: Faker::App.name
+  end
 
   name = "comic " + Faker::Book.title
   price = 1000 + (rand 1000)
   quantity = 4567 + (rand 10000)
-  Product.create! name: name, price: price, description: Faker::Lorem.paragraph,
+  p = Product.create! name: name, price: price, description: Faker::Lorem.paragraph,
     quantity: quantity, category_id: 5
+  3.times do
+    Specification.create! product_id: p.id, feature_name: Faker::Lorem.word,
+      feature_value: Faker::App.name
+  end
+
   name = "novel " + Faker::Book.title
   price = 1000 + (rand 1000)
   quantity = 4567 + (rand 10000)
-  Product.create! name: name, price: price, description: Faker::Lorem.paragraph,
+  p = Product.create! name: name, price: price, description: Faker::Lorem.paragraph,
     quantity: quantity, category_id: 6
+  3.times do
+    Specification.create! product_id: p.id, feature_name: Faker::Lorem.word,
+      feature_value: Faker::App.name
+  end
 end
 
 10.times do
@@ -60,12 +78,14 @@ users = User.take 6
 15.times do |n|
   content = Faker::Lorem.sentence
   status = "pending"
-  flag = rand 3
-  if flag == 1; status = "accepted" end
-  if flag == 2; status = "rejected" end
   users.each do |user|
-    user.requests.create! content: content, status: status,
+    r = user.requests.create! content: content, status: status,
       created_at: Time.now - (rand 30).day - (rand 10 + 1).hour - (rand 35).minute
+    flag = rand 3
+    if flag == 1; status = "accepted" end
+    if flag == 2; status = "rejected" end
+    r.status = status
+    r.save!
   end
 end
 
@@ -81,11 +101,12 @@ products = Product.take 3
     OrderDetail.create! price: price, quantity: quantity,
       product_id: product_id, order_id: order_id
   end
-  user_id = 1 + rand(User.count)
+  user_id = 2
   shipping_address = Faker::Address.street_address
   status = "progress"
   o = Order.create! user_id: user_id, shipping_address: shipping_address,
-    status: status, total_money: total_money
+    status: status, total_money: total_money,
+    created_at: Time.now - (rand 30).day - (rand 10 + 1).hour - (rand 35).minute
   flag = rand 4
   if flag == 1; status = "shipping" end
   if flag == 2; status = "delivered" end
