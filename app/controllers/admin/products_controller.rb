@@ -6,7 +6,8 @@ class Admin::ProductsController < ApplicationController
   def index
     @product = Product.new
     @search = Product.search params[:q]
-    @products = @search.result.select(:id, :name, :price, :quantity, :description, :category_id, :slug)
+    @products = @search.result
+      .select(:id, :name, :image, :price, :quantity, :description, :category_id, :slug)
       .includes(:category).order(created_at: :DESC).page(params[:page])
       .per Settings.admin.product_list.per_page
     respond_to do |format|
@@ -15,8 +16,21 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+
   def new
-    @categories = Category.select(:id, :name, :depth)
+    respond_to do |format|
+      format.html{render partial: "product_form", locals: {product: @product}}
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.html{render partial: "product_edit_form", locals: {product: @product}}
+    end
+  end
+
+  def new
+    @categories = Category.select :id, :name, :depth
     @product = Product.new
     respond_to do |format|
       format.html{render partial: "product_form", local: {product: @product}}
@@ -38,6 +52,15 @@ class Admin::ProductsController < ApplicationController
       flash[:success] = t ".update_success"
     else
       flash[:danger] = t ".update_failed"
+    end
+    redirect_to :back
+  end
+
+  def destroy
+    if @product.destroy
+      flash[:success] = t ".deleted"
+    else
+      flash[:danger] = t ".fail_to_delete"
     end
     redirect_to :back
   end

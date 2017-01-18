@@ -2,6 +2,7 @@ format:
   picture_size: [400, 400]
   order_picture_size: "120x120"
   number_delimiter: ","
+  product_picture_size: "100x85"
 admin:
   categories_list:
     per_page: 10

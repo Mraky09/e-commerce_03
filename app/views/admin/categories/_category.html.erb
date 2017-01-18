@@ -8,11 +8,7 @@
     <% end %>
   </td>
   <td>
-    <% if category.right - category.left == 1 %>
-      <%= number_with_delimiter category.products.group("category_id").sum(:quantity).first[1], delimiter: Settings.format.number_delimiter %>
-    <% else %>
-      0
-    <% end %>
+    <%= category.products.size %>
   </td>
   <td><%= category.description %></td>
   <td class="align-text-center">

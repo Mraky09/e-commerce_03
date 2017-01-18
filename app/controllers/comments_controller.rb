@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   end
 
   def load_product
-    @product = Product.find_by id: params[:product_id]
+    @product = Product.friendly.find_by slug: params[:product_id]
     render_404 unless @product
   end
 end
