@@ -1,5 +1,9 @@
 <tr id="<%= dom_id(category) %>">
-  <td></td>
+  <td>
+    <% params[:page] ||= "1" %>
+    <%= create_index params[:page], @index, Settings.admin.categories_list.per_page %>
+    <% @index += 1 %>
+  </td>
   <td>
     <% if category.depth > 0 %>
       <%= "-" * category.depth %>
@@ -8,7 +12,13 @@
       <%= category.name %>
     <% end %>
   </td>
-  <td><%= category.products.size %></td>
+  <td>
+    <% if category.right - category.left == 1 %>
+      <%= number_with_delimiter category.products.group("category_id").sum(:quantity).first[1], delimiter: Settings.format.number_delimiter %>
+    <% else %>
+      0
+    <% end %>
+  </td>
   <td><%= category.description %></td>
   <td class="align-text-center">
     <%= link_to "#category-modal-#{category.id}", data: {toggle: :modal},

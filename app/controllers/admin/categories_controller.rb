@@ -6,7 +6,8 @@ class Admin::CategoriesController < ApplicationController
   def index
     @category = Category.new
     @search = Category.ransack params[:q]
-    @categories = @search.result.includes(:products).order :left
+    @categories = @search.result.includes(:products).order(:left)
+      .page(params[:page]).per Settings.admin.categories_list.per_page
   end
 
   def create

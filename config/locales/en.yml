@@ -98,7 +98,7 @@ en:
     categories:
       index:
         name: "Category name"
-        product: "Product Quantity"
+        product: "Products Quantity"
         created_at: "Created at"
         action: "Action"
         add_category: "Add Category"
@@ -187,6 +187,15 @@ en:
       request_success: "Your request has been registered"
       request_failed: "Your request hasn't been registered"
   orders:
+    index:
+      my_purchase: "My Purchases History"
+      order_code: "Order's Code"
+      created_at: "Created at"
+      grand_total: "Grand Total"
+      products_quantity: "Products Quantity"
+      shipping_address: "Shipping Address"
+      status: "Status"
+      search_order_user: "Search by order's code..."
     new:
       checkout: "Checkout"
       cart: "Cart"

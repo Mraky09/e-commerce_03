@@ -36,7 +36,14 @@
       <th><%= t "delete" %></th>
     </thead>
     <tbody id="category-list">
-      <%= render @categories %>
+      <% if @categories.any? %>
+        <% @index = 0 %>
+        <%= render @categories %>
+      <% else %>
+        <tr><td colspan="6" class="no-data"><%= t "no_data" %></td></tr>
+      <% end %>
     </tbody>
   </table>
+
+  <%= paginate @categories, theme: "twitter-bootstrap-4" %>
 </div>

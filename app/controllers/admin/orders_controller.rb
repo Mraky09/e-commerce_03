@@ -9,12 +9,16 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    return if params[:status].nil?
-    if @order.update_attributes status: params[:status].to_i
+    if @order.update_attributes order_params
       flash[:success] = t ".update_success"
     else
       flash[:notice] = t ".update_fail"
     end
     redirect_to admin_orders_path
+  end
+
+  private
+  def order_params
+    params.require(:order).permit :status
   end
 end

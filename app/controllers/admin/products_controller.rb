@@ -6,7 +6,7 @@ class Admin::ProductsController < ApplicationController
   def index
     @product = Product.new
     @search = Product.search params[:q]
-    @products = @search.result.select(:id, :name, :price, :quantity, :description, :category_id)
+    @products = @search.result.select(:id, :name, :price, :quantity, :description, :category_id, :slug)
       .includes(:category).order(created_at: :DESC).page(params[:page])
       .per Settings.admin.product_list.per_page
     respond_to do |format|
