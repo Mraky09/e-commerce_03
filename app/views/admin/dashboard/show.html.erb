@@ -1,3 +1,18 @@
 <%= provide :title, t(".admin_dashboard") %>
 
 <h1><%= t ".admin_dashboard" %></h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= line_chart @users_created_one_month_ago %>
+    <p class="lead text-center"><%= t ".user_chart" %></p>
+  </div>
+  <div class="col-md-6">
+    <%= column_chart @orders_created_in_a_week %>
+    <p class="lead text-center"><%= t '.order_chart' %></p>
+  </div>
+  <div class="col-md-12">
+    <%= line_chart @sale_in_month %>
+    <p class="lead text-center"><%= t '.sale_chart' %></p>
+  </div>
+</div>

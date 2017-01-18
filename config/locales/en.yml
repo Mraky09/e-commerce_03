@@ -148,6 +148,9 @@ en:
     dashboard:
       show:
         admin_dashboard: "Dashboard"
+        user_chart: "User created a month ago"
+        order_chart: "Order submited in one week"
+        sale_chart: "Sale chart"
     users:
       index:
         manage_users: "Manage Users"
