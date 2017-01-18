@@ -1,10 +1,5 @@
 <tr id="<%= dom_id(category) %>">
   <td>
-    <% params[:page] ||= "1" %>
-    <%= create_index params[:page], @index, Settings.admin.categories_list.per_page %>
-    <% @index += 1 %>
-  </td>
-  <td>
     <% if category.depth > 0 %>
       <%= "-" * category.depth %>
       <%= category.name %>
@@ -21,8 +16,7 @@
   </td>
   <td><%= category.description %></td>
   <td class="align-text-center">
-    <%= link_to "#category-modal-#{category.id}", data: {toggle: :modal},
-      class: "btn-edit-category btn btn-warning" do %>
+    <%= link_to edit_admin_category_path(category), class: "btn-edit-category btn btn-warning" do %>
       <span class="glyphicon glyphicon-edit"></span>
     <% end %>
   </td>
@@ -32,37 +26,3 @@
     <% end %>
   </td>
 </tr>
-
-<%= form_tag admin_category_path(category) , method: :put, id: "edit-category-form" do %>
-  <div id="category-modal-<%= category.id %>" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="head"><%= t ".edit_category" %></h3>
-        </div>
-        <div class="modal-body admin-edit-category">
-          <form role="form">
-            <%= hidden_field_tag "id", category.id %>
-            <div>
-              <label><%= t ".name" %></label>
-              <%= text_field_tag :name, params[:name], value: category.name,
-                class: "form-control" %>
-              <br>
-            </div>
-            <div>
-              <label><%= t ".description" %></label>
-              <%= text_field_tag :description, params[:description],
-                value: category.description, class: "form-control" %>
-            </div>
-            <div class="modal-footer">
-              <%= submit_tag t(".update"), class: "btn btn-primary btn-submit" %>
-              <button type="submit" class="btn btn-danger" data-dismiss="modal">
-                <%= t ".cancel" %>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>

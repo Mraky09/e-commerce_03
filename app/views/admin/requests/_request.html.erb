@@ -1,0 +1,26 @@
+<tr>
+  <td>
+    <%= index_for request_counter, @requests.current_page,
+      Settings.admin.requests_list.per_page %></td>
+  </td>
+  <td><%= request.user.name %></td>
+  <td><%= request.content %></td>
+  <td><%= l request.created_at, format: :long %></td>
+  <td>
+    <span class="request-<%= request.status %>"><%= request.status %></span>
+  </td>
+  <td>
+    <div class="form-accept">
+      <%= form_for [:admin, request], method: :patch do |f| %>
+        <%= f.hidden_field :status, value: :accepted  %>
+        <%= f.submit t(".accept"), class: "btn btn-success", data: {confirm: t("you_sure")} %>
+      <% end %>
+    </div>
+    <div class="form-reject">
+      <%= form_for [:admin, request], method: :patch do |f| %>
+        <%= f.hidden_field :status, value: :rejected  %>
+        <%= f.submit t(".reject"), class: "btn btn-danger", data: {confirm: t("you_sure")} %>
+      <% end %>
+    </div>
+  </td>
+</tr>

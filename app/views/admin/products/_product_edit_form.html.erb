@@ -1,4 +1,4 @@
-<%= form_for [:admin, @product] do |f| %>
+<%= form_for [:admin, product], url: admin_product_path(product) do |f| %>
   <div class="modal-body row">
     <div class="col-sm-6">
       <div class="form-group">
@@ -29,13 +29,9 @@
     </div>
     <div class="form-group col-sm-12">
       <%= f.label :specifications %>:
-      <%= add_fields t("add"), f, :specifications %>
       <%= f.fields_for :specifications do |builder| %>
         <%= render "specification_fields", f: builder %>
       <% end %>
-      <div class="spec">
-
-      </div>
     </div>
     <div class="col-sm-12">
       <div class="form-group">
@@ -43,9 +39,8 @@
         <%= f.text_area :description, class: "form-control", required: true %>
       </div>
     </div>
-
   </div>
   <div class="modal-footer">
-    <%= f.submit t(".save"), class: "btn btn-primary add-product" %>
+    <%= f.submit t(".save"), class: "btn btn-primary add-product"%>
   </div>
 <% end %>

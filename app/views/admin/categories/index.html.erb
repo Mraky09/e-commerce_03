@@ -28,7 +28,6 @@
 <div class="col-md-12">
   <table class="table table-striped table-hover">
     <thead>
-      <th><%= t "table_index" %></th>
       <th><%= t ".name" %></th>
       <th><%= t ".product" %></th>
       <th><%= t "description" %></th>
@@ -46,4 +45,19 @@
   </table>
 
   <%= paginate @categories, theme: "twitter-bootstrap-4" %>
+</div>
+
+<div class="modal category-modal-edit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2><%= t ".new" %></h2>
+        <h5><%= t".edit_category" %></h5>
+      </div>
+      <div class="modal-body-category-edit">
+
+      </div>
+    </div>
+  </div>
 </div>

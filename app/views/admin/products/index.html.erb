@@ -21,23 +21,27 @@
       </div>
       <br>
       <%= f.submit t("search"), class: "btn btn-default" %>
-      <a id="btn-new-product" class="btn btn-success">
+      <%= link_to new_admin_product_path, class: "btn btn-success btn-new-product" do %>
         <span>
           <i class="fa fa-plus-square" aria-hidden="true"></i> <%= t ".new" %>
         </span>
-      </a>
+      <% end %>
     <% end %>
     <br>
   </div>
 </div>
-<div id="modal-new" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2><%= t ".new" %></h2>
-    </div>
-    <div class="modal-body">
 
+<div class="modal product-modal-new">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2><%= t ".new" %></h2>
+        <h5><%= t".new_product" %></h5>
+      </div>
+      <div class="modal-body-new">
+
+      </div>
     </div>
   </div>
 </div>
@@ -86,5 +90,20 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="modal product-modal-edit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2><%= t ".new" %></h2>
+        <h5><%= t".edit_product" %></h5>
+      </div>
+      <div class="modal-body-edit">
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= paginate @products, theme: "twitter-bootstrap-4" %>
