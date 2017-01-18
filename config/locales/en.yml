@@ -17,6 +17,9 @@ en:
   category_list: "Manage Categories"
   product_list : "Manage Products"
   order_list: "Manage Orders"
+  delete_cate_error: "Can't delete this category(maybe it's contain child category inside it's or product)"
+  done_delete: "Delete successully!"
+  delete_desc: "This category are deleted"
   wong_authorize: "You do not have authorize for this page."
   add_spec: "Add specification"
   maximum: "A product only have 4 specifications"
@@ -25,6 +28,8 @@ en:
   warning_delete: "Warning!"
   confirm_button: "Delete!"
   cancel_button: "Cancel"
+  remove: "remove"
+  add: "add"
   table_index: "No."
   no_data: "No data"
   search: "Search"
@@ -80,6 +85,9 @@ en:
       defaults: "%d/%m/%Y"
   admin:
     requests:
+      request:
+        accept: "Accept"
+        reject: "Reject"
       index:
         manage_requests: "Manage Requests"
         username: "Username"
@@ -96,6 +104,8 @@ en:
       create:
         product_import: "Product imported"
     categories:
+      category_edit_form:
+        save: "Edit category"
       index:
         name: "Category name"
         product: "Products Quantity"
@@ -103,17 +113,21 @@ en:
         action: "Action"
         add_category: "Add Category"
         admin_categories_search: "Search category by name..."
+        edit_category: "Edit category"
       category:
         update: "Update"
       update:
         update_success: "Update Category Success"
         update_fail: "Update Category Failed"
     products:
+      product_form:
+        save: "Save product"
       create:
         create_product_success: "Product created!"
         create_product_fail: "Product create failed!"
       index:
         new: "New product"
+        new_product: "Add new product"
         price_gteq: "Price greater than"
         price_lteq: "Price less than"
         menu: "Product menu"
@@ -126,6 +140,11 @@ en:
       update:
         update_success: "Update Product Success"
         update_failed: "Cannot update product"
+      product_edit_form:
+        save: "Edit product"
+      destroy:
+        deleted: "Product deleted!"
+        fail_to_delete: "Product delete failed!"
     dashboard:
       show:
         admin_dashboard: "Dashboard"
@@ -141,6 +160,8 @@ en:
         avatar: "Avatar"
         admin_users_search: "Search user by name..."
     orders:
+      order:
+        change_order_status: "Change"
       index:
         order_code: "Order Code"
         total_value: "Total Value"

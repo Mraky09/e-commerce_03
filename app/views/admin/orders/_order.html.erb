@@ -1,0 +1,24 @@
+<tr>
+  <td>
+    <%= index_for order_counter, @orders.current_page,
+      Settings.admin.orders_list.per_page %>
+  </td>
+  <td><%= number_to_currency order.total_money %></td>
+  <td><%= order.order_details.group("order_id").sum(:quantity).first[1] %></td>
+  <td><%= order.created_at %></td>
+  <td><%= order.shipping_address %></td>
+  <td>
+    <span class="order-<%= order.status %>"><%= order.status %></span>
+  </td>
+  <td>
+    <%= form_tag admin_order_path(order), method: :put do %>
+      <div class="col-md-9 row">
+        <%= select_tag :status, options_for_select(Order.statuses, params[:status]),
+          class: "form-control" %>
+      </div>
+      <div class="col-md-3 row">
+        <%= submit_tag t(".change_order_status"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </td>
+</tr>
