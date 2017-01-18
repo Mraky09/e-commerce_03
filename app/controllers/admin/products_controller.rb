@@ -42,6 +42,15 @@ class Admin::ProductsController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    if @product.destroy
+      flash[:success] = t ".deleted"
+    else
+      flash[:danger] = t ".fail_to_delete"
+    end
+    redirect_to :back
+  end
+
   private
   def product_params
     params.required(:product).permit :name, :quantity, :category_id, :description,

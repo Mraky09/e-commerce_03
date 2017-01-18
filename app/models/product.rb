@@ -2,6 +2,8 @@ class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+  acts_as_paranoid
+
   belongs_to :category
   has_many :specifications, dependent: :destroy, inverse_of: :product
   has_many :comments

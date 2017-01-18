@@ -36,6 +36,7 @@ gem "ratyrate"
 gem "friendly_id"
 gem "whenever"
 gem "sidekiq"
+gem "paranoia"
 
 group :development, :test do
   gem "rubocop", require: false
