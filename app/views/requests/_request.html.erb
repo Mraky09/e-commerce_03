@@ -1,0 +1,11 @@
+<tr>
+  <td>
+    <%= index_for request_counter, @requests.current_page,
+      Settings.user.requests.per_page %>
+  </td>
+  <td><%= request.content %></td>
+  <td class="no-data"><%= l request.created_at, format: :long %></td>
+  <td class="no-data">
+    <span class="request request-<%= request.status %>"><%= request.status %></span>
+  </td>
+</tr>

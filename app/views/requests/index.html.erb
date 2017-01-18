@@ -13,19 +13,7 @@
   </thead>
   <tbody>
     <% if @requests.any? %>
-      <% @requests.each_with_index do |request, index| %>
-        <tr>
-          <td>
-            <% params[:page] ||= "1" %>
-            <%= create_index params[:page], index, Settings.user.requests.per_page %>
-          </td>
-          <td><%= request.content %></td>
-          <td class="no-data"><%= l request.created_at, format: :long %></td>
-          <td class="no-data">
-            <span class="request request-<%= request.status %>"><%= request.status %></span>
-          </td>
-        </tr>
-      <% end %>
+      <%= render @requests %>
     <% else %>
       <tr><td colspan="4" class="no-data"><%= t "no_data" %></td></tr>
     <% end %>

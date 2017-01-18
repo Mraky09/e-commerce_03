@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @requests = Request.order(created_at: :desc).where("user_id = ?", current_user.id)
       .page(params[:page]).per Settings.user.requests.per_page

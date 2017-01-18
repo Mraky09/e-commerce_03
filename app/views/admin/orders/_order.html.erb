@@ -11,13 +11,13 @@
     <span class="order-<%= order.status %>"><%= order.status %></span>
   </td>
   <td>
-    <%= form_tag admin_order_path(order), method: :put do %>
+    <%= form_for [:admin, order], method: :put do |f| %>
       <div class="col-md-9 row">
-        <%= select_tag :status, options_for_select(Order.statuses, params[:status]),
+        <%= f.select :status, options_for_select(Order.statuses.keys, order.status), {},
           class: "form-control" %>
       </div>
       <div class="col-md-3 row">
-        <%= submit_tag t(".change_order_status"), class: "btn btn-primary" %>
+        <%= f.submit t(".change_order_status"), class: "btn btn-primary" %>
       </div>
     <% end %>
   </td>
