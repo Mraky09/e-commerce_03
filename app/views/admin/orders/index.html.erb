@@ -5,7 +5,6 @@
   <thead>
     <tr>
       <th><%= t "table_index" %></th>
-      <th><%= t ".order_code" %></th>
       <th><%= t ".total_value" %></th>
       <th><%= t ".total_quantity" %></th>
       <th><%= t ".order_date" %></th>
@@ -16,35 +15,7 @@
   </thead>
   <tbody>
     <% if @orders.present? %>
-      <% @orders.each_with_index do |order, index| %>
-        <tr>
-          <td>
-            <% params[:page] ||= "1" %>
-            <%= create_index params[:page], index, Settings.admin.orders_list.per_page %>
-          </td>
-          <td><%= order.id %></td>
-          <td><%= number_to_currency order.total_money %></td>
-          <td>
-            <%= order.order_details.group("order_id").sum(:quantity).first[1] %>
-          </td>
-          <td><%= l order.created_at, format: :long %></td>
-          <td><%= order.shipping_address %></td>
-          <td>
-            <span class="order-<%= order.status %>"><%= order.status %></span>
-          </td>
-          <td>
-            <%= form_for [:admin, order], method: :put do |f| %>
-              <div class="col-md-9 row">
-                <%= f.select :status, options_for_select(Order.statuses.keys, order.status), {},
-                  class: "form-control" %>
-              </div>
-              <div class="col-md-3 row">
-                <%= f.submit t(".change_order_status"), class: "btn btn-primary" %>
-              </div>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
+      <%= render @orders  %>
     <% else %>
       <tr><td colspan="8" class="no-data"><%= t "no_data" %></td></tr>
     <% end %>
