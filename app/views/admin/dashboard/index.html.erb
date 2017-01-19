@@ -1,6 +1,22 @@
 <%= provide :title, t(".admin_dashboard") %>
-
 <h1><%= t ".admin_dashboard" %></h1>
+
+<%= form_tag admin_dashboard_index_path, class: "form-inline" ,method: :get do %>
+  <div class="form-group">
+    <div class="form-filter">
+      <%= text_field_tag :start_at %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-filter">
+      <%= text_field_tag :end_at %>
+    </div>
+  </div>
+  <%= button_tag t("filter"), type: :submit, class: "btn btn-primary" %>
+<% end %>
+
+<br>
+<br>
 
 <div class="row">
   <div class="col-md-6">

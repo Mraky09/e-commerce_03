@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   delete "/cart/:id", to: "cart#destroy"
 
   namespace :admin do
-    root "dashboard#show"
+    root "dashboard#index"
     resources :users
+    resources :dashboard, only: :index
     resources :categories
     resources :products
     resources :orders
