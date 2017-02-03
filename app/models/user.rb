@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :address_books
   has_many :requests
   has_many :orders
+  has_many :comments
 
   enum role: [:admin, :user]
 
@@ -12,10 +13,6 @@ class User < ApplicationRecord
   ratyrate_rater
 
   scope :email_of_all_admins, -> (){select(:id, :email).where role: :admin}
-
-  def role? role
-    role.include? role.to_s
-  end
 
   class << self
     def from_omniauth auth
@@ -31,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def is_admin_user?
-    role = :admin
+    role == "admin"
   end
 
   private

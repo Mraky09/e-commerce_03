@@ -261,7 +261,7 @@ Metrics/LineLength:
   Description: "Limit lines to 80 characters."
   Enabled: true
 
-Style/MethodCallParentheses:
+Style/MethodCallWithoutArgsParentheses:
   Description: "Do not use parentheses for method calls with no arguments."
   Enabled: true
 

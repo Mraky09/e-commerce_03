@@ -16,13 +16,6 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-
-  def new
-    respond_to do |format|
-      format.html{render partial: "product_form", locals: {product: @product}}
-    end
-  end
-
   def edit
     respond_to do |format|
       format.html{render partial: "product_edit_form", locals: {product: @product}}

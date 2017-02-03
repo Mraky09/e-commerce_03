@@ -11,13 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def is_admin?
-    authenticate_user!
-    return if current_user.admin?
-    flash[:alert] = t "wrong_authorize"
-    redirect_to root_path
-  end
-
   def load_recent_view_session
     session[:recent] = [] if session[:recent].nil?
   end
