@@ -1,6 +1,6 @@
 RSpec.configure do |config|
   config.before :suite do
-    DatabaseCleaner.clean_with :truncation
+    DatabaseCleaner.clean_with :truncation, {except: %w[categories]}
   end
 
   config.before :each do
