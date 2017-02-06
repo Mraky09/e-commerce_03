@@ -45,6 +45,12 @@ gem "social-share-button"
 group :development, :test do
   gem "rubocop", require: false
   gem "byebug", platform: :mri
+  gem "factory_girl_rails"
+  gem "rspec-rails"
+  gem "simplecov", require: false
+  gem "shoulda-matchers"
+  gem "database_cleaner"
+  gem "rails-controller-testing"
 end
 
 group :development do
